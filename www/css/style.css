@@ -1,1 +1,21 @@
-/* Empty. Add your own CSS if you like */
+.bar-footer {
+  padding: 10px 10px 0 10px;
+  height: 64px;
+  display: inline;
+  text-align: center;
+}
+
+.has-footer {
+  bottom: 62px;
+}
+
+#slider {
+  margin: 0 18px 0 18px;
+  display: block;
+}
+
+.slider-title {
+  display: block;
+  color: #969696;
+  font-weight: bold;
+}
