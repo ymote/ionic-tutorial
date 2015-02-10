@@ -13,9 +13,13 @@ angular.module('movie', ['ionic', 'movie.services', 'movie.controllers'])
     templateUrl: 'templates/movie-index.html',
     controller: 'MovieHomeCtrl'
   })
-  
+
+  .state('movie-detail', {
+    url: "/movie/:title",
+    templateUrl: "templates/movie-detail.html",
+    controller: "MovieDetailCtrl"
+  })  
  
-  
   ;
   
   // if none of the above states are matched, use this as the fallback

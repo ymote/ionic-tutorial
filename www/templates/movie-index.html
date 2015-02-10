@@ -15,7 +15,7 @@
 
     <ion-list>
       <ion-item ng-repeat="movie in movies" class="item-thumbnail-left"  
-        href="">
+        href="#/movie/{{movie.title}}">
         
         <img ng-src="data/pics/{{movie.poster.imdb}}">
         <h2>{{movie.title}}</h2>
