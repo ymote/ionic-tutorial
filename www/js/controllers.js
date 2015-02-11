@@ -79,16 +79,12 @@ angular.module('movie.controllers', [])
         
 }])
 
-.controller('MovieDetailCtrl', ['$scope', '$location', 'MovieService', '$stateParams', function($scope, $location, MovieService, $stateParams){
-    $scope.title = $stateParams.title;
-    MovieService.findMovieByTitle($scope.title).then(function(movie){
-      if (!movie){
-        $location.path('/movies');
-      }
-      $scope.movie = movie;
-    });
-    
-    
+.controller('MovieDetailCtrl', ['$scope', '$location', 'movie', function($scope, $location, movie){
+  if(!movie){
+    $location.path('/movies');
+  }
+  $scope.movie = movie;
+
 }])
 
 ;

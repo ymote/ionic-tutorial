@@ -17,12 +17,12 @@ angular.module('movie.directives', [])
       else if (scope.rating > 6){
         scope.imageSrc = 'popcorn.png';
       }
-      else if (scope.imageSrc > 4){
+      else if (scope.rating > 4){
         scope.imageSrc = 'green.png';
       }
     },
     
-    template: '<span><img ng-src="{{imageSrc}}"><strong>{{rating}}</strong></span>'
+    template: '<span><img ng-src="img/{{imageSrc}}" class="ratingImage"><strong>{{rating}}</strong></span>'
     
   }
 })

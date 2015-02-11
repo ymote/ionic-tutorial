@@ -17,7 +17,12 @@ angular.module('movie', ['ionic', 'movie.services', 'movie.filters', 'movie.dire
   .state('movie-detail', {
     url: "/movie/:title",
     templateUrl: "templates/movie-detail.html",
-    controller: "MovieDetailCtrl"
+    controller: "MovieDetailCtrl",
+    resolve: {
+      movie: ['MovieService','$stateParams', function(MovieService, $stateParams){
+        return MovieService.findMovieByTitle($stateParams.title);
+      }]
+    }
   })  
  
   ;

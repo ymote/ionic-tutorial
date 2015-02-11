@@ -19,3 +19,18 @@
   color: #969696;
   font-weight: bold;
 }
+
+.ratingImage {
+  width: 25px;
+  height: 25px;
+}
+
+.item-content {
+  display: flex !important;
+}
+
+.movie-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
