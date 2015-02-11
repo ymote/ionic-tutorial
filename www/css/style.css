@@ -27,6 +27,7 @@
 
 .item-content {
   display: flex !important;
+  width: 100%;
 }
 
 .movie-intro {
