@@ -1,0 +1,51 @@
+<ion-view title="{{title}}">
+
+  <ion-content has-header="true" padding="true">
+
+    <div class="list card">
+      <div class="item item-divider">
+        <h2>{{movie.title}} ({{movie.release_date | release }})</h2>
+        <p>{{movie.rating}}</p>
+      </div>
+      <div class="item item-image">
+        <img ng-src="data/pics/{{movie.poster.imdb}}" style="width:auto;">
+      </div>
+      <div class="item item-text-wrap">
+        {{movie.plot_simple}}
+      </div>
+      
+      <ion-item class="item-icon-left">
+        <i class="icon ion-information placeholder-icon"></i>
+        <span ng-bind="movie.genres.join(' ,')"></span>
+      </ion-item>
+      
+      <ion-item class="item-icon-left">
+        <i class="icon ion-alert-circled placeholder-icon"></i>
+        <span ng-bind="movie.rated"></span>
+      </ion-item>
+      
+      <ion-item class="item-icon-left">
+        <i class="icon ion-flag placeholder-icon"></i>
+        <span ng-bind="movie.language[0]"></span>
+      </ion-item>   
+  
+      <ion-item class="item-icon-left">
+        <i class="icon ion-location placeholder-icon"></i>
+        <span ng-bind="movie.country.join(' ,')"></span>
+      </ion-item>
+      
+      <ion-item class="item-icon-left">
+        <i class="icon ion-film-maker placeholder-icon"></i>
+        <span ng-bind="movie.directors.join(' ,')"></span>
+      </ion-item>
+  
+      <ion-item class="item-icon-left">
+        <i class="icon ion-person-stalker placeholder-icon"></i>
+        <span ng-bind="movie.actors.slice(3).join(' ,')"></span>
+      </ion-item>
+      
+    </div>
+
+  </ion-content>
+
+</ion-view>

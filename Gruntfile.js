@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
     watch: {
       src: {
-        files: ['www/**/*', '!www/lib/**/*', '!www/plugins/**/*'],
+        files: ['www/css/**/*','www/js/**/*','www/templates/**/*', 'www/index.html'],
         options: { livereload: 35730 }
       }
     }
