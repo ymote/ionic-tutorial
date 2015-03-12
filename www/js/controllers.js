@@ -1,23 +1,9 @@
 angular.module('directory.controllers', [])
 
-.controller('EmployeeIndexCtrl', function ($scope, EmployeeService) {
+.controller('EmployeeIndexCtrl',['$scope', 'EmployeeService', function ($scope, EmployeeService) {
 
-  $scope.searchKey = "";
+  //define a employees variable to hold all employees data
   $scope.employees = [];
-
-  //clear search should empty searchKey and show all employees on view
-  $scope.clearSearch = function () {
-
-
-  };
-
-  //use the findByName method in EmployeeService to complete search function
-  //assagin the results to employees variable
-  $scope.search = function () {
-
-
-
-  };
 
   //get all employees from EmployeeService
   //assagin the results to employees variable
@@ -30,6 +16,6 @@ angular.module('directory.controllers', [])
   //initially, show all employees on view 
   findAllEmployees();
 
-})
+}])
     
 ;

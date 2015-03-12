@@ -6,8 +6,11 @@
 angular.module('directory', ['ionic','directory.services','directory.controllers'])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+  
+  //please see angular ui-router's documentation on usage
   $stateProvider
   
+  //when url is /employees, the EmployeeIndexCtrl will run, and the view will be templates/employee-index.html
   .state('employee-index', {
     url: '/employees',
     templateUrl: 'templates/employee-index.html',
@@ -17,6 +20,7 @@ angular.module('directory', ['ionic','directory.services','directory.controllers
   ;
 
   // if none of the above states are matched, use this as the fallback
+  // also the home page / goes to /employees, so it is the default page
   $urlRouterProvider.otherwise('/employees');   
 }])
 

@@ -1,7 +1,7 @@
-describe("Directory Controller Unit Tests", function() {
+describe("Test employees list.", function() {
 
   beforeEach(function() {
-      //Ensure angular modules available
+    //Ensure angular modules available
     module('directory.services');
     module('directory.controllers');
   });
@@ -14,24 +14,9 @@ describe("Directory Controller Unit Tests", function() {
     scope.$digest();
   }));
 
-  it('should show all 12 employees by default', function(){
+  it('$scope.employees should have 12 employees coming from EmployeeService.findAll method', function(){
     expect(scope.employees).toBeDefined();
-    expect(scope.employees.length).toBe(12);
+    expect(scope.employees.length).toBe(12, 'There should be 12 items in $scope.employees');
   });
   
-  it('should be able to search employee by searchKey', function(){
-    scope.searchKey = 'steve';
-    scope.search();
-    scope.$digest();
-    expect(scope.employees.length).toBe(1);
-    expect(scope.employees[0].firstName).toBe('Steven');
-  });
-  
-  it('should show all 12 employees after clearSearch method is called', function(){
-    scope.clearSearch();
-    scope.$digest();
-    expect(scope.employees).toBeDefined();
-    expect(scope.employees.length).toBe(12);  
-  });
-
 });

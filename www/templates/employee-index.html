@@ -1,22 +1,14 @@
 <ion-view view-title="Employees">
 
-<ion-header-bar class="bar-subheader item-input-inset">
-  <label class="item-input-wrapper">
-    <i class="icon ion-ios7-search placeholder-icon"></i>
-    <!-- binding the input to searchKey model-->
-    <input id="searchKey" type="search" placeholder="Search" autocorrect="off" >
-    <button class="button button-clear" ng-click="clearSearch()">X</button>
-  </label>
-  <button class="button button-clear" ng-click="search()">Search</button>
-</ion-header-bar>
-
 <ion-content>
   <ion-list>
     <ion-item ng-repeat="employee in employees" type="item-text-wrap" class="item-avatar">
       <img ng-src="pics/{{employee.pic}}"/>
       {{employee.firstName}} {{employee.lastName}}
+      
       <!-- show employee's title in <p> tag below -->
       <p> </p>
+      
     </ion-item>
   </ion-list>
 </ion-content>

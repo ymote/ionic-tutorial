@@ -1,6 +1,6 @@
 angular.module('directory.services', [])
 
-.factory('EmployeeService', function($q) {
+.factory('EmployeeService', ['$q', function($q) {
 
   var employees = [
     {"id": 1, "firstName": "James", "lastName": "King", "managerId": 0, "managerName": "", "reports": 4, "title": "President and CEO", "department": "Corporate", "cellPhone": "617-000-0001", "officePhone": "781-000-0001", "email": "jking@fakemail.com", "city": "Boston, MA", "pic": "James_King.jpg", "twitterId": "@fakejking", "blog": "http://coenraets.org"},
@@ -27,34 +27,7 @@ angular.module('directory.services', [])
       var deferred = $q.defer();
       deferred.resolve(employees);
       return deferred.promise;
-    },
-
-    findById: function(employeeId) {
-      var deferred = $q.defer();
-      var employee = employees[employeeId - 1];
-      deferred.resolve(employee);
-      return deferred.promise;
-    },
-
-    findByName: function(searchKey) {
-      var deferred = $q.defer();
-      var results = employees.filter(function(element) {
-        var fullName = element.firstName + " " + element.lastName;
-        return fullName.toLowerCase().indexOf(searchKey.toLowerCase()) > -1;
-      });
-      deferred.resolve(results);
-      return deferred.promise;
-    },
-
-    findByManager: function (managerId) {
-      var deferred = $q.defer(),
-      results = employees.filter(function (element) {
-        return parseInt(managerId) === element.managerId;
-      });
-      deferred.resolve(results);
-      return deferred.promise;
     }
-
   }
 
-});
+}]);
