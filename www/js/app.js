@@ -17,6 +17,14 @@ angular.module('directory', ['ionic','directory.services','directory.controllers
     controller: 'EmployeeIndexCtrl'
   })
   
+  //state for employee detail
+  //when url is /employees/:employeeId, the EmployeeDetailCtrl will run, and the view will be templates/employee-detail.html
+  .state('employee', {
+    url: '/employees/:employeeId',
+    templateUrl: 'templates/employee-detail.html',
+    controller: 'EmployeeDetailCtrl'
+  })  
+  
   ;
 
   // if none of the above states are matched, use this as the fallback

@@ -1,31 +1,35 @@
-Now we have a list widget show all employees. Let's build a search bar on top to search through the list.
+The index page is complete. It now features a list of employees and a search bar to search the list.
 
-It might not be too helpful as we only have 12 employees. But as our list grows, the search function will become more useful.
+Now we start working on the detail page for individual employee. Recall in the ```employees``` variable in ***services.js***, each employee 
+has many attributes. These information will be displayed on the detail page.
 
-**Service**
+** Router **
 
-Let's put the code talking to data in ***services.js***. We define a ```findByName``` function, which is given a search string, and 
-search through the ```employees``` array on the full name of employee (```firstName```+```lastName```). This is also a promise based 
-method, as we are simulating a api call to database, and the promsie is resolved when the results return.
+The first thing is to add anouther router in ***app.js***. We define another state ```employee```. Notice we have a dynamic segment in url 
+```:employeeId```. This will be available as ```$stateParam.employeeId``` to controllers. It contains the identity for the employee to be shown.
 
+** Service **
 
-**Controller**
+Again we start with the change in ***services.js***. We now have a ```findById``` method, which expecting an integer represents the 1 based index 
+of employee in ```employees```. We simply get the employee object from the array, and return it. Notice all methods in services return promises.
 
-In ***controllers.js***, we added a ```$scope.searchKey``` variable to store the search key. We apply angular's ```$watch``` listener on it, 
-so the search method will be triggered when there is a change in this variable. This provides search-as-you-type experience.
+** EmployeeDetailCtrl Controller **
 
-There is also a ```clearSearch``` method, which clear the ```searchKey``` variable and return all employees.
+The ***controllers.js*** defines another controller for the employee detail page. This controller will run when url is ```/employees/:employeeId```. 
+We are still thinking as this is a web app with the url and routing. Ionic and Cordova will make sure all these ideas also work in a mobile app.
 
-**View**
+Thanks to angular ui-router, we can retrive the employee id through ```$stateParam.employeeId```, which is exactly what we are doing in 
+```EmployeeDetailCtrl```. We need to pass it to ```findById``` method in ***services.js*** and attach the returned employee to ```$scope```.
 
-Most ionic work happens on the view. In ***employee-index.html***, we added a ```<ion-header-bar>``` directive, which adds a fixed header bar above 
-our employees list. 
+** View **
 
-It is heavily styled to mimic input box on iphone. Besides all the CSS styles, it has a ```input``` element with ng-model ```searchKey``` and a button 
-to trigger the ```clearSearch``` method on click event.
+Up to now, what we are doing is exactly the same as developing a web app. The view is where ionic shines and makes all the differnces for mobile app. 
 
-In summary, all the javascript code should feel very similar to an angular web app. Ionic mainly provide pre-built directives to properly style our app 
-for mobile devices. 
+We have a new view file ***templates/employee-detail.html***. Here we use another very common widget on mobile device -- card view. 
+It is a great way to contain and organize information. 
 
+Ionic is a UI framework, so besides its directive utilities, it is also possible to use css classes it provided to style our view. in the ***employee-detail.html***, 
+we have a ```<div>``` with classes ```list card```. Inside this ```<div>```, we have several ```<div>``` to represents the items in the card view. 
+The pure css apporach make it very easy to construct a native view for our app. 
 
 

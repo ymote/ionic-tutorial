@@ -10,7 +10,11 @@
 
 <ion-content>
   <ion-list>
-    <ion-item ng-repeat="employee in employees" type="item-text-wrap" class="item-avatar">
+  
+    <!-- add link on ion-item to redirect to employee detail page -->
+    <ion-item ng-repeat="employee in employees" type="item-text-wrap" class="item-avatar"
+      href="">
+      
       <img ng-src="pics/{{employee.pic}}"/>
       {{employee.firstName}} {{employee.lastName}}
       <p>{{employee.title}}</p>

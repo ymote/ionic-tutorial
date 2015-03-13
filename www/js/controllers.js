@@ -9,19 +9,15 @@ angular.module('directory.controllers', [])
 
   //watch the searchKey variable, call the findByName method in EmployeeService to filter employees
   $scope.$watch('searchKey', function(){
-    //fill in code below
-    //use the findByName method in EmployeeService to return qualified employees and assign to $scope.employees
-    
-    
-    
+    EmployeeService.findByName($scope.searchKey).then(function (employees) {
+      $scope.employees = employees;
+    });
   });
 
   //clear the search, should show all employees
   $scope.clearSearch = function () {
     $scope.searchKey = "";
-    //fill in the code below to show all employees
-    
-    
+    findAllEmployees();
   };
   
   //get all employees from EmployeeService
@@ -35,5 +31,21 @@ angular.module('directory.controllers', [])
   findAllEmployees();
 
 }])
-    
+   
+
+.controller('EmployeeDetailCtrl', function($scope, $stateParams, EmployeeService) {
+  
+  $scope.employee = null;
+  
+  //fill in code below
+  //pass the $stateParams.employeeId to EmployeeService.findById method 
+  //the returned result should be assigned to $scope.employee
+
+
+
+
+
+})    
+  
+  
 ;
