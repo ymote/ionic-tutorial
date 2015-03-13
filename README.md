@@ -1,36 +1,31 @@
-Let's start building the employee directory app. This app is original created by <a href="http://coenraets.org/blog/2014/02/sample-mobile-application-with-ionic-and-angularjs/" target="_blank">
-Christophe Coenraets</a>. We encouge you checkout his blog post and other wonderful apps he made.
+Now we have a list widget show all employees. Let's build a search bar on top to search through the list.
 
-**Index Page**
+It might not be too helpful as we only have 12 employees. But as our list grows, the search function will become more useful.
 
-In this chaper, we will build the home page of the app. The home page shows a list of current employees, with their names and titles. It also has a search bar so we can search for employees 
-based on name. The snapshot of app :
+**Service**
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "index page")
+Let's put the code talking to data in ***services.js***. We define a ```findByName``` function, which is given a search string, and 
+search through the ```employees``` array on the full name of employee (```firstName```+```lastName```). This is also a promise based 
+method, as we are simulating a api call to database, and the promsie is resolved when the results return.
 
 
-**List component**
+**Controller**
 
-In this exercise, we will build the list to show all employees. 
+In ***controllers.js***, we added a ```$scope.searchKey``` variable to store the search key. We apply angular's ```$watch``` listener on it, 
+so the search method will be triggered when there is a change in this variable. This provides search-as-you-type experience.
 
-First we need to have the employees data to be displayed. Here we use a simple javascript object array to mock the data. In reality you will likely get them from database, and then also use 
-array to store them in front-end. Take a look at ***www/services.js***, the ```employees``` variable contains all the data. For each employee entry, there is ```firstName```, ```lastName```, ```title``` 
-among other attributes.
+There is also a ```clearSearch``` method, which clear the ```searchKey``` variable and return all employees.
 
-The ```EmployeeService``` factory provides interface for data. In the ```findAll``` method, we have a promise to return the ```employees``` array. It is not necessary here to use a promise, we 
-can just simply return the array. However if the system is hooked to a database, it is important all methods talking with database are promise based.
+**View**
 
-The ***www/js/app.js*** is the entry point of our app. First we inject ```ionic``` library, and our ```controllers``` and ```services```. In the config section, we use the popular 
-<a href="https://github.com/angular-ui/ui-router">Angular ui-router</a> to define the routing for our app. For detail information, please take a look at their github repository.
+Most ionic work happens on the view. In ***employee-index.html***, we added a ```<ion-header-bar>``` directive, which adds a fixed header bar above 
+our employees list. 
 
-In ***www/js/controllers.js***, we define the ```EmployeeIndexCtrl```. With the injection of ```EmployeeService```, we can use the ```findAll``` method to populate our ```$scope.employees``` with 
-the employees data.
+It is heavily styled to mimic input box on iphone. Besides all the CSS styles, it has a ```input``` element with ng-model ```searchKey``` and a button 
+to trigger the ```clearSearch``` method on click event.
 
-The corresponding view for the controller is ```www/templates/employee-index.html```. It will substitute the ```<ion-nav-view></ion-nav-view>``` in ```www/index.html```. It is a 
-```<ion-view>``` directive. The ```view-title``` attribute will show at the top header bar of our app.
+In summary, all the javascript code should feel very similar to an angular web app. Ionic mainly provide pre-built directives to properly style our app 
+for mobile devices. 
 
-In the view, we define a ```<ion-content>``` to hold the content, which is a ```<ion-list>```. The list is composied of multiple ```<ion-item>```, we use ```ng-repeat``` to populate it with the 
-```$scope.employees``` in controller. Each item is consist of employee's image, name and title.
 
-If you know angular, you should feel right at home with these code. Essentially we are writing angular code in directives provided by ionic.
 

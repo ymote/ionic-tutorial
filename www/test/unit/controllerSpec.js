@@ -14,9 +14,18 @@ describe("Test employees list.", function() {
     scope.$digest();
   }));
 
-  it('$scope.employees should have 12 employees coming from EmployeeService.findAll method', function(){
+  it('Should be able to search employees.', function(){
+    scope.searchKey = 'steve';
+    scope.$digest();
+    expect(scope.employees.length).toBe(1, 'When searchKey is steve, there should be 1 employee.');
+    expect(scope.employees[0].firstName).toBe('Steven', 'The firstName of employee should be Steven.');
+  });
+  
+  it('Should show all 12 employees when clearSearch method is fired.', function(){
+    scope.clearSearch();
+    scope.$digest();
     expect(scope.employees).toBeDefined();
-    expect(scope.employees.length).toBe(12, 'There should be 12 items in $scope.employees');
+    expect(scope.employees.length).toBe(12, 'There should be 12 employees when searchKey is empty.');  
   });
   
 });
