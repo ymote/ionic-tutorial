@@ -39,11 +39,25 @@ angular.module('directory.services', [])
       return deferred.promise;
     },    
     
-    //find employee object based on the employeeId, which is the 1 based index of employee in the array
     findById: function(employeeId) {
       var deferred = $q.defer();
       var employee = employees[employeeId - 1];
       deferred.resolve(employee);
+      return deferred.promise;
+    },    
+    
+    //given a managerId, the id of employee, find all employees report to the manager
+    findByManager: function (managerId) {
+      var results = [ ];
+      var deferred = $q.defer();
+      
+      //fill in code below
+      //filter employees to find people whose managerId is the managerId passed in.
+
+
+
+
+      deferred.resolve(results); //resolve the found results
       return deferred.promise;
     }    
     

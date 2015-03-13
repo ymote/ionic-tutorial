@@ -1,35 +1,32 @@
-The index page is complete. It now features a list of employees and a search bar to search the list.
+This exercise is the final feature of our Employee Directory App. If you look at the ```employees``` variable in ***services.js***, there is one last attribute we have not 
+included -- ```managerId```. For a company/organization, each employee may have a supervisor. The Manager also need to see who should report to him/her.
 
-Now we start working on the detail page for individual employee. Recall in the ```employees``` variable in ***services.js***, each employee 
-has many attributes. These information will be displayed on the detail page.
-
-** Router **
-
-The first thing is to add anouther router in ***app.js***. We define another state ```employee```. Notice we have a dynamic segment in url 
-```:employeeId```. This will be available as ```$stateParam.employeeId``` to controllers. It contains the identity for the employee to be shown.
+In this exercise, we add another page -- the report page, so a supervisor can manage his/her group. For a employee, the ```managerId``` represents the index of the manager 
+in the ```employees``` array. E.g. James King dose not have a manager (he is the CEO), his ```managerId``` is 0. There are 4 employees with ```managerId``` 1, meaning he has 
+4 employees reporting to him. Let's work on this feature.
 
 ** Service **
 
-Again we start with the change in ***services.js***. We now have a ```findById``` method, which expecting an integer represents the 1 based index 
-of employee in ```employees```. We simply get the employee object from the array, and return it. Notice all methods in services return promises.
+In ***services.js***, we now have a method ```findByManager``` which returns a promise to be resolved. The method is given a ```managerId```, it should search through 
+```employees``` to filter employees with managerId and reolve these employees.
 
-** EmployeeDetailCtrl Controller **
+** Router and Resolve **
 
-The ***controllers.js*** defines another controller for the employee detail page. This controller will run when url is ```/employees/:employeeId```. 
-We are still thinking as this is a web app with the url and routing. Ionic and Cordova will make sure all these ideas also work in a mobile app.
+The big change is in the routers in ***app.js***. Thanks to ui-router, we can add a ```resolve``` section in the ```$state```. From ui-router documentation, 
 
-Thanks to angular ui-router, we can retrive the employee id through ```$stateParam.employeeId```, which is exactly what we are doing in 
-```EmployeeDetailCtrl```. We need to pass it to ```findById``` method in ***services.js*** and attach the returned employee to ```$scope```.
+> If any of these dependencies are promises, they will be resolved and converted to a value before the controller is instantiated. 
+The resolve property is a map object. The map object contains key/value pairs.
 
-** View **
+Since our services return promises, we can readily resolve them in ui-router, so in controller, we can expect to have actual employee(s) object available as parameter.
 
-Up to now, what we are doing is exactly the same as developing a web app. The view is where ionic shines and makes all the differnces for mobile app. 
+Take a look at ```EmployeeDetailCtrl```. Since in  ```$state employee```, the employee is resolved, we can expect employee available as function parameter, and assign it 
+to ```$scope.employee```.
 
-We have a new view file ***templates/employee-detail.html***. Here we use another very common widget on mobile device -- card view. 
-It is a great way to contain and organize information. 
+Now for the ```EmployeeReportsCtrl```, we need to get the manager (the employee from :employeeId in url segment), and his/her reports from the ```findByManager``` method 
+in ***services.js***. We can resolve both these objects in the router, so the controller is much cleaner.
 
-Ionic is a UI framework, so besides its directive utilities, it is also possible to use css classes it provided to style our view. in the ***employee-detail.html***, 
-we have a ```<div>``` with classes ```list card```. Inside this ```<div>```, we have several ```<div>``` to represents the items in the card view. 
-The pure css apporach make it very easy to construct a native view for our app. 
+**View**
 
+Finally we need to contruct a view page ***templates/employee-reports.html** to show all reporters of a employee. We can use a card view to display. The first item in card 
+is the information of manager, with the rest items represent his/her reporters.
 

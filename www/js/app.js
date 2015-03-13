@@ -22,8 +22,34 @@ angular.module('directory', ['ionic','directory.services','directory.controllers
   .state('employee', {
     url: '/employees/:employeeId',
     templateUrl: 'templates/employee-detail.html',
-    controller: 'EmployeeDetailCtrl'
+    controller: 'EmployeeDetailCtrl',
+    resolve: {
+      employee: ['EmployeeService', '$stateParams', function(EmployeeService, $stateParams){
+        return EmployeeService.findById($stateParams.employeeId);
+      }]
+    }    
   })  
+  
+  .state('reports', {
+    url: '/employees/:employeeId/reports',
+    templateUrl: 'templates/employee-reports.html',
+    controller: 'EmployeeReportsCtrl',
+    resolve: {
+      
+      //change the code
+      //resolve the employee object 
+      employee: ['EmployeeService', '$stateParams', function(EmployeeService, $stateParams){
+        return null; //change
+      }],
+      
+      //change the code
+      //resolve the employee's reports
+      reports: ['EmployeeService', '$stateParams', function(EmployeeService, $stateParams){
+        return null; //change
+      }]
+      
+    }
+  })
   
   ;
 

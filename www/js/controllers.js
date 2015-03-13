@@ -32,20 +32,14 @@ angular.module('directory.controllers', [])
 
 }])
    
-
-.controller('EmployeeDetailCtrl', function($scope, $stateParams, EmployeeService) {
-  
-  $scope.employee = null;
-  
-  //fill in code below
-  //pass the $stateParams.employeeId to EmployeeService.findById method 
-  //the returned result should be assigned to $scope.employee
-
-
-
-
-
-})    
+.controller('EmployeeDetailCtrl', ['$scope', 'employee', function($scope, employee) {
+  $scope.employee = employee;  
+}])    
+ 
+.controller('EmployeeReportsCtrl', ['$scope', 'employee', 'reports', function ($scope, employee, reports) {
+  $scope.employee = employee;
+  $scope.reports = reports;
+}])   
   
   
 ;
