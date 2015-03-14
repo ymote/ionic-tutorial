@@ -1,23 +1,43 @@
-First of all, let's get all our movies shown when the app starts. Again we delegate all interactions with data source to 
-***services.js***. Instead of a simple javascript array, we use a json file ***movies.json*** to store all 91 movies.
+In the last exercise, the index page need to load 91 movies on startup. We have to wait for a few moments before the page show up. 
+Imagine we have thousands of movies in the json file, the performance of our app would be unbearable.
 
-***services***
+A more efficient way to load data is using pagination, which only load more data upon user request. A very popular way of pagination 
+is infinite scrolling. It provides a very smooth user experience as the data is automatically loaded when users scroll to the bottom 
+of the page. We will implement the infinite scrolling in this exercise.
 
-We use angular built-in ```$http``` module to read data from ***movies.json*** through the ```getAllMovies``` method. As 
-alwarys, we use promise based methods to talk with data. Also we store the data to a local variable ```movies```. So we 
-only need to read the json file once. 
+*** Infinite scrolling ***
 
-***Router***
+It is actually very easy to implement infinite scrolling with ionic as it provides a directive just for it. ```<ion-infinite-scroll>``` 
+directive takes care of loading more data when users get to the bottom of page. Its api requires us to implement ```on-infinite``` method, 
+which will be called to get more data.
 
-In ***app.js***, we use ui-router to add default router to ```MovieHomeCtrl```, with the view template ***templates/movie-index.html***.
+*** Service ***
 
-***Controller***
+To implement infinite scrolling, first we need to change the way of retriving data. First we load a small chunk of data. Along the way, we 
+track of the size of already loaded data. The following requests to load data will continute from where we stop last time. This is a typical 
+implementation of pagination. 
 
-The ```MovieHomeCtrl``` is pretty simple, it retrives the movie data from ```MoiveService``` and assigns it to ```$scope.movies``` variable.
+Let's look at the actual implementation. In ***services.js***, since we are using a json file, we still load all movies in to ```movies``` 
+variable initially and then mimic pagination by extracing data from it. In the production envrionment, you will likely to use a database to 
+store all the data, which inherently support data pagination.
 
-***View***
+We added three methods ```loadPage```, ```hasMore``` and ```getMovies```. Let's image our data is stored in a book. Each page have a fixed number 
+of items (```limit```), and based on this value and the total size of our data, we can calculate the number of pages (```numPages```) in the book. 
+Pagination essentially is retrive data on a page (```pageNum```) of the book, which is the [```pageNum*limit```, ```(pageNum+1)*limit```) range in 
+data.
 
-Finally let's look at the template showing all movies. After walking through the Employee Directory app, this template should feels 
-very fimilar. We are using ```<ion-list>``` to show movies. Each movie  ```<ion-item>``` has the movie poster, title, release date and 
-user rating.
+```loadPage``` method is used to retrive data given a ```pageNum``` and size of data in a page ```limit```. 
+
+```hasMore``` methos is to determine if there are more data to load given the same parameters.
+
+Finally ```getMovies``` get movies data utilize the upper two methods. This is a promise based method, as controller will use it to retrive data.
+
+*** Controller ***
+
+We set the limit and currentPage variable in ```MovieHomeCtrl``` to load 20 movies initially. We will add inifinite scrolling in the next exercise.
+
+
+
+
+
 
