@@ -3,22 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('movie', ['ionic', 'movie.services', 'movie.controllers'])
-
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-  $stateProvider
-  
-  .state('movie-index', {
-    url: '/movies',
-    templateUrl: 'templates/movie-index.html',
-    controller: 'MovieHomeCtrl'
-  })
-
-  ;
-  
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/movies');   
-}])
+angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
