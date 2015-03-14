@@ -1,6 +1,7 @@
 <ion-view view-title="Movie App">
 
   <ion-content id="content" class="has-header has-subheader has-footer">
+  
     <ion-list>
       <ion-item ng-repeat="movie in movies" class="item-thumbnail-left item-text-wrap" style="display:flex;">
         <img ng-src="data/pics/{{movie.poster.imdb}}">
@@ -10,6 +11,19 @@
         </div>
       </ion-item>
     </ion-list>
+  
+  
+    <!-- fill in the attributes below -->
+    <!-- ng-if check if need to further scroll -->
+    <!-- on-infinite is called to load more data when scroller is at bottom -->
+    <ion-infinite-scroll
+      ng-if=""
+      icon="ion-loading-c"
+      on-infinite=""
+      distance="1%">
+    </ion-infinite-scroll>    
+  
+    
   </ion-content>
   
 </ion-view>

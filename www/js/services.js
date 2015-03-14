@@ -20,7 +20,6 @@ angular.module('movie.services', [])
   //limit is the item number in each page
   //pageNum is the number of page to load
   var loadPage = function(pageNum, limit){
-    
     //start is the item index in movies to load
     var start = pageNum * limit;
     
@@ -36,18 +35,12 @@ angular.module('movie.services', [])
       end = movies.length;
     }
     
-    //todo return data from start to end
-    //the start is inclusive, end is exclusive, [start, end)
-    return [];
-    
+    return current.slice(start, end);
   };
   
   //given a pageNum and limit, check if there are move data in movies variable  
   var hasMore = function(pageNum, limit){
-    
-    //todo, check the start index given pageNum & limit is available in current variable
-    return false;
-    
+    return pageNum * limit < current.length;
   };
   
   var getMovies = function(pageNum, limit){
