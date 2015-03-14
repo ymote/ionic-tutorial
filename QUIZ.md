@@ -1,4 +1,3 @@
-*1.* Finish the ```loadMoreData``` and ```hasMoreData``` method in ```MovieHomeCtrl``` to call relative methods in ```MovieService```.
+*1.* Finish the ```searchMovies``` method in ```MovieService``` to search movies on title, directors and actors.
 
-*2.* In ```movie-index.html```, wire the ```ng-if``` and ```on-infinite``` to correct methods in ```MovieHomeCtrl``` to have 
-infinite scrolling working.
+*2.* In ```MovieHomeCtrl```, trigger the method in *1.* in ```$scope.$watch``` block to update movies. 

@@ -2,7 +2,9 @@ angular.module('movie.services', [])
 
 .factory('MovieService', ['$q', '$http', function($q, $http) {
   var movies = [];
-
+  //store current selected movies
+  var current = [];
+  
   var getAllMovies = function(){
     var defer = $q.defer();
     if (movies.length === 0){
@@ -15,26 +17,24 @@ angular.module('movie.services', [])
     }
     return defer.promise;
   };
+
+  //reset is called to have seleced movies stored as current
+  //current is used in search, pagination and sort
+  var reset = function(movies){
+    current = movies;
+  };
   
-  //load chunk of data from movies variable
-  //limit is the item number in each page
-  //pageNum is the number of page to load
+  //use pageNum to locate the page section 
+  //return the page section from current stored movies
   var loadPage = function(pageNum, limit){
-    //start is the item index in movies to load
     var start = pageNum * limit;
-    
-    //if start index is already larger than total number of items
-    //we know there is no more item 
-    if (start >= movies.length) {
+    if (start >= current.length) {
       return [];
     }
-    
-    //calculate the end index, which is the start of the next page or the end of movies variable
     var end = (pageNum+1) * limit;
-    if (end > movies.length){
-      end = movies.length;
+    if (end > current.length){
+      end = current.length;
     }
-    
     return current.slice(start, end);
   };
   
@@ -51,10 +51,37 @@ angular.module('movie.services', [])
     return defer.promise;
   };  
   
+  
+  //search movies based on searchKey
+  var searchMovies = function(searchKey, pageNum, limit){
+    var defer = $q.defer();
+    //use getAllMovies method to get all movies
+    //apply array.filer method on movies to search on seleced fields
+    getAllMovies().then(function(movies){
+      var results = movies.filter(function(movie) {
+        //search in anywhere on title, directors and actors
+        var searchString = movie.title+' '+movie.directors.join(' ')+' '+movie.actors.join(' ');
+        
+        //fill in code below
+        //we compile a searchString to be searched on
+        //do a case-insensitive comparison to check if searchKey is in searchString
+        return true;
+
+
+      });
+      //store the search results to current movies, which is used for pagination
+      reset(results);
+      //resolve the first page of results
+      defer.resolve(loadPage(pageNum, limit));
+    });    
+    return defer.promise;
+  };
+  
   return {
     loadPage: loadPage,
     hasMore: hasMore,
-    getMovies: getMovies,    
+    getMovies: getMovies, 
+    searchMovies: searchMovies
   };
     
 }])

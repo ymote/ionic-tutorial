@@ -1,20 +1,26 @@
-In this exercise, we finish our implementation of inifinite scrolling. We now already have service support data pagination, let's 
-see how to use it in controller.
+Let's move on to our next feature -- search movies. This is a search-as-you-type feature, very similar to the one we implemented in 
+Employee Directory App. Let's start coding it.
 
-*** Controlelr ***
+## Service
 
-We add two $scope mehods in controller. These methods are triggered by ```<ion-infinite-scroll>``` directive. The ```loadMoreData``` 
-method calls ```MovieService.getMovies``` to load move data into ```$scope.movies```. Please note we need to call 
-```$scope.$broadcast('scroll.infiniteScrollComplete');``` in this method to let ionic know the data have been loaded. 
-```$scope.$broadcast``` dispatches an event name downwards to all child scopes. In this case, we are dispatching ```scroll.infiniteScrollComplete``` 
-message to the ```ionic-infinite-scroll`` directive. This is an example showing inter-commnucation between different components in 
-Angular. This comes in handy developing event-driven application.
+We added a ```searchMovies``` method, which is feed with a ```searchKey``` variable and do a search on title, directors and actors of 
+a movie to decide if the movie satisfies the search condition.
 
-Another method ```$scope.hasMoreData``` is needed to notify ```ion-infinite-scroll``` if there are more data. It calls ```hasMore``` 
-method in ```MovieService``` to do that.
+Please note we added another variabe ```current``` to store data. This is because now we have two features, it is likely search will return 
+more than 20 results, then scrolling should work on the search results. It would be very confusing if a user scorll the page, his/her 
+seach results are gone.
 
-*** View ***
+To make sure these two features play together, we use a variabe ```current``` to store the search results. A new method ```reset`` is called 
+in the ```searchMovies``` function which store the search results in ```current```.  And pagination is acting on ```current``` rather than 
+the whole ```movies``` data. We will keep this convention adding other features -- each feature changes the value of ```current```, 
+and pagination is on the results retuned by the feature.
 
-Now we have everthing ready, adding the directive to view is actually the easiest part. The ```<ion-infinite-scroll>``` expects a 
-```ng-if``` binding to a funcion to check if there is more data, and ```on-infinite``` binding to function to load more data. Just 
-wire them with the right functions, the infinite scrolling will work.
+## Controller
+
+In ```MovieHomeCtrl```, we use angular's ```$watch``` on ```$scope.searkKey```. Every time the value changes, it should trigger 
+```searchMovies``` method in ```MovieService```. The results are instantly displayed on view.
+
+## View
+
+In ***movie-index.html***, before ```<ion-content>```, we add a header which contains a input box. The input has a ```ng-model=searhKey```, 
+so the user types in the input, ```$scope.moveis``` will change accordingly to update the view.

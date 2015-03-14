@@ -1,7 +1,15 @@
 <ion-view view-title="Movie App">
 
+  <!-- header bar provide serch functionality -->
+  <div class="bar bar-subheader item-input-inset">
+    <label class="item-input-wrapper" id="search-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input id="searchKey" type="search" placeholder="Search" autocorrect="off" ng-model="searchKey">
+    </label>
+    <button class="button button-clear icon ion-close-round" ng-click="searchKey=''"></button>
+  </div>
+
   <ion-content id="content" class="has-header has-subheader has-footer">
-  
     <ion-list>
       <ion-item ng-repeat="movie in movies" class="item-thumbnail-left item-text-wrap" style="display:flex;">
         <img ng-src="data/pics/{{movie.poster.imdb}}">
@@ -11,19 +19,13 @@
         </div>
       </ion-item>
     </ion-list>
-  
-  
-    <!-- fill in the attributes below -->
-    <!-- ng-if check if need to further scroll -->
-    <!-- on-infinite is called to load more data when scroller is at bottom -->
-    <ion-infinite-scroll
-      ng-if=""
-      icon="ion-loading-c"
-      on-infinite=""
-      distance="1%">
-    </ion-infinite-scroll>    
-  
     
+    <ion-infinite-scroll
+            ng-if="hasMoreData()"
+            icon="ion-loading-c"
+            on-infinite="loadMoreData()"
+            distance="1%">
+    </ion-infinite-scroll>  
   </ion-content>
   
 </ion-view>
