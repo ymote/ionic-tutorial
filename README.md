@@ -1,18 +1,23 @@
-Employee Directory App introduces us to build mobile app with web technology. Thanks to ionic and apache cordova, writing mobile 
-app feels right at home for angular developers. 
+First of all, let's get all our movies shown when the app starts. Again we delegate all interactions with data source to 
+***services.js***. Instead of a simple javascript array, we use a json file ***movies.json*** to store all 91 movies.
 
-In the Employee Directory App, ionic is UI library. We simply use its css styles to change the feel of our app. The javascript part 
-is very similar to a web app.
+***services***
 
-In the following exercies, we start builing another app -- Movie App. In this app, we will introduce some javascript utilities from 
-ionic. Its javascript api comes in handy to build rich functional components.
+We use angular built-in ```$http``` module to read data from ***movies.json*** through the ```getAllMovies``` method. As 
+alwarys, we use promise based methods to talk with data. Also we store the data to a local variable ```movies```. So we 
+only need to read the json file once. 
 
-We choose to build an app about movie because the topic is familiar to most people. More importantly, the movie app represents a very 
-popular purpose of mobile applications -- information displaying. 
+***Router***
 
-Our movie app will show about 100 movies in recent years. It includes features such as infinite scrolling, search-as-you-type, various 
-sort options and filter by user ratings. These features are very common for a information displaying app. 
+In ***app.js***, we use ui-router to add default router to ```MovieHomeCtrl```, with the view template ***templates/movie-index.html***.
 
-Let's start building!
+***Controller***
 
+The ```MovieHomeCtrl``` is pretty simple, it retrives the movie data from ```MoiveService``` and assigns it to ```$scope.movies``` variable.
+
+***View***
+
+Finally let's look at the template showing all movies. After walking through the Employee Directory app, this template should feels 
+very fimilar. We are using ```<ion-list>``` to show movies. Each movie  ```<ion-item>``` has the movie poster, title, release date and 
+user rating.
 

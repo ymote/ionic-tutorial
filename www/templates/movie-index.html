@@ -1,0 +1,25 @@
+<ion-view view-title="Movie App">
+
+  <ion-content id="content" class="has-header has-subheader has-footer">
+    <ion-list>
+      <ion-item ng-repeat="movie in movies" class="item-thumbnail-left item-text-wrap" style="display:flex;">
+      
+        <img ng-src="data/pics/{{movie.poster.imdb}}">
+        <div class="movie-intro">
+        
+          <!-- fill in code below -->
+          <h2>
+            <!-- show movie's title in the h2 tag-->
+          </h2>
+          <p>
+            <!-- show movie's release date --->
+            &nbsp;&nbsp;&nbsp;
+            <!-- show movie's rating --->
+          </p>
+          
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
+</ion-view>
