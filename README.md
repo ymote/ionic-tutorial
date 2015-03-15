@@ -1,26 +1,31 @@
-Let's move on to our next feature -- search movies. This is a search-as-you-type feature, very similar to the one we implemented in 
-Employee Directory App. Let's start coding it.
+Another popular feature in information displaying app is the abilities to sort results in various ways. We are going to 
+implement this feature in this exercise.
+
+## Sort Movies
+
+When facing a long list of movies, the sort function is very convenient. We will add four sort options -- sort by title, 
+by use rating, by release date and by popularity and sort in both directions.
+
+Let's first identify the attributes in movie we will use. The first three sort options are obvious, there are fields just 
+store those information in movies. For popularity, we use the ```rating_count``` field in movie, as more people choose to rate 
+the movies means more people are interested in it.
 
 ## Service
 
-We added a ```searchMovies``` method, which is feed with a ```searchKey``` variable and do a search on title, directors and actors of 
-a movie to decide if the movie satisfies the search condition.
-
-Please note we added another variabe ```current``` to store data. This is because now we have two features, it is likely search will return 
-more than 20 results, then scrolling should work on the search results. It would be very confusing if a user scorll the page, his/her 
-seach results are gone.
-
-To make sure these two features play together, we use a variabe ```current``` to store the search results. A new method ```reset`` is called 
-in the ```searchMovies``` function which store the search results in ```current```.  And pagination is acting on ```current``` rather than 
-the whole ```movies``` data. We will keep this convention adding other features -- each feature changes the value of ```current```, 
-and pagination is on the results retuned by the feature.
+Let's change ***services.js*** to support sorting on these four fields. We add ```sortMovies``` method, which expecting ```sortKey`` 
+and ```sortOrder``` variables. ```sortKey``` is the name of the field we are going to sort on, ```sortOrder``` is an integer, it controls 
+the order of sorting based on the sign of number. Please notice we again sorting on the ```current``` movies, so it will play nicely 
+with other features.
 
 ## Controller
 
-In ```MovieHomeCtrl```, we use angular's ```$watch``` on ```$scope.searkKey```. Every time the value changes, it should trigger 
-```searchMovies``` method in ```MovieService```. The results are instantly displayed on view.
+In ```MovieHomeCtrl```, we add a method ```$scope.sortMovies``` to work with ```MovieService.sortMovies``` to provide sort function. 
+More interstingly, we use ```ionicPopover``` directive to provide popup for user to select sort option. This directive expects 
+a template ```templates/popover.html```. This is in the ```movie-index.html```, the bottom ```<script>``` tag. 
 
 ## View
 
-In ***movie-index.html***, before ```<ion-content>```, we add a header which contains a input box. The input has a ```ng-model=searhKey```, 
-so the user types in the input, ```$scope.moveis``` will change accordingly to update the view.
+Lastly in the ***movie-index.html***, we added ```<ion-nav-button>``` above the header bar. This button will show on the right of the 
+header. Click the button will show the sort menu from the template in ```<script id="templates/popover.html" type="text/ng-template">```. 
+For the template, each item has ng-click bind to the ```$scope.sortMovies``` in ```MovieHomeCtrl```, passing the corresponding sork key.
+

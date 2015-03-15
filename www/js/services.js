@@ -51,29 +51,35 @@ angular.module('movie.services', [])
     return defer.promise;
   };  
   
-  
   //search movies based on searchKey
   var searchMovies = function(searchKey, pageNum, limit){
     var defer = $q.defer();
-    //use getAllMovies method to get all movies
     //apply array.filer method on movies to search on seleced fields
     getAllMovies().then(function(movies){
       var results = movies.filter(function(movie) {
-        //search in anywhere on title, directors and actors
         var searchString = movie.title+' '+movie.directors.join(' ')+' '+movie.actors.join(' ');
-        
-        //fill in code below
-        //we compile a searchString to be searched on
-        //do a case-insensitive comparison to check if searchKey is in searchString
-        return true;
-
-
-      });
-      //store the search results to current movies, which is used for pagination
+        return searchString.toLowerCase().indexOf(searchKey.toLowerCase()) > -1;
+      });        
       reset(results);
-      //resolve the first page of results
       defer.resolve(loadPage(pageNum, limit));
     });    
+    return defer.promise;
+  };
+    
+  //sort movies based on sortKey and sortOrder  
+  var sortMovies = function(sortKey, sortOrder, pageNum, limit){
+    var defer = $q.defer();
+    //we want to sort on currently selected movies
+    var results = current.sort(function(movie1, movie2){
+      //use sortOrder to construct compare function in array.sort method
+      if (sortOrder > 0){
+        return (movie1[sortKey] < movie2[sortKey]) ? 1 : -1;
+      } else {
+        return (movie1[sortKey] > movie2[sortKey]) ? 1 : -1;
+      }
+    });
+    reset(results);
+    defer.resolve(loadPage(pageNum, limit));
     return defer.promise;
   };
   
@@ -81,7 +87,8 @@ angular.module('movie.services', [])
     loadPage: loadPage,
     hasMore: hasMore,
     getMovies: getMovies, 
-    searchMovies: searchMovies
+    searchMovies: searchMovies,
+    sortMovies: sortMovies
   };
     
 }])

@@ -1,3 +1,4 @@
-*1.* Finish the ```searchMovies``` method in ```MovieService``` to search movies on title, directors and actors.
+*1.* Finish the ```sortMovies``` method in ```MovieHomeCtrl``` to sort movies by sortKey.
 
-*2.* In ```MovieHomeCtrl```, trigger the method in *1.* in ```$scope.$watch``` block to update movies. 
+*2.* In ***movie-index.html***, complete the ng-click in the popover template to call the ```$scope.sortMovies``` method, passing the 
+sortKey, which is the corresponding field names in movie.

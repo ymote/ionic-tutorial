@@ -1,8 +1,10 @@
 angular.module('movie.controllers', [])
 
-.controller('MovieHomeCtrl', ['$scope', 'MovieService', function($scope, MovieService){
+.controller('MovieHomeCtrl', ['$scope', 'MovieService', '$ionicPopover', function($scope, MovieService, $ionicPopover){
   $scope.movies = [];
   $scope.searchKey = '';
+  $scope.sortKey = '';
+  var sortOrder = 1;
 
   var limit = 20, currentPage = 0;
   
@@ -22,16 +24,40 @@ angular.module('movie.controllers', [])
     return MovieService.hasMore(currentPage+1, limit);
   };
   
-  //every time the searchKey model changes, it will be triggered
-  //User MovieService provided search method to search for movies containing searchKey
   $scope.$watch('searchKey', function(){
-    //set currentPage to 0, so return the first 20 records of search results
     currentPage = 0;
-    //finish the method to search movies using MovieService provided search function
-
-
-
+    MovieService.searchMovies($scope.searchKey, currentPage, limit).then(function(movies){
+      $scope.movies = movies;
+    }); 
   });
+  
+  //sort movie funcionality
+  //sortKey is passed in from ng-click on view
+  $scope.sortMovies = function(sortKey){
+    //click the same sorkey for the reverse order
+    //use sortOrder to keep track of the order of sorting
+    if ($scope.sortKey == sortKey){
+      sortOrder = (-1) * sortOrder;
+    }
+    //set currentPage to 0 makes sure to grab the first 20 records of sorting results
+    currentPage = 0;
+    //save sortKey to scope and complete the sort movies function using function in MovieService
+
+
+
+
+  };
+
+
+  //shows the usage of $ionicPopover, see ionic documentation for detail explanation.
+  //the name for the popover view is 'templates/popover', it is the templateUrl for the $ionicPopover directive.
+  //we use ng-template to provide the view, it is in the movie-index.html
+  $ionicPopover.fromTemplateUrl('templates/popover.html', {
+    //attach the current scope, so ng-click in the popover template is wired to the method defined above
+    scope: $scope, 
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });  
   
 }])
 

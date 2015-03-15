@@ -1,5 +1,8 @@
 <ion-view view-title="Movie App">
-
+  <ion-nav-buttons side="right">
+    <button class="button button-icon ion-more popover-button" ng-click="popover.show($event)"></button>
+  </ion-nav-buttons>
+  
   <!-- header bar provide serch functionality -->
   <div class="bar bar-subheader item-input-inset">
     <label class="item-input-wrapper" id="search-input">
@@ -29,3 +32,28 @@
   </ion-content>
   
 </ion-view>
+
+<!-- sort movies by 'title', 'rating', 'release_date' and 'rating_count' -->
+<!-- ths is a typical usage to provide template for angular directive -->
+<!-- the id attribute is used as the templateUrl for directive -->
+<!-- please complete the four ng-click calls for sorting the movies -->
+<script id="templates/popover.html" type="text/ng-template">
+  <ion-popover-view style="height: 220px">
+    <ion-content>
+      <div class="list">
+        <a class="item" ng-click="">
+          Sort by Title
+        </a>
+        <a class="item" ng-click="">
+          Sort by Rating
+        </a>
+        <a class="item" ng-click="">
+          Sort by Release Date
+        </a>
+        <a class="item" ng-click="">
+          Sort by Porpularity
+        </a>        
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script> 
