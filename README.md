@@ -1,30 +1,34 @@
-For the final exercise, let's add a directive and a filter to polish the movie app a little bit.
+## The finishing remark
 
-## The rating directive
+We come to the end of the jounary of using ionic to build hybrid app. Hopefully you find ionic very powerful and easy to use. For more 
+information, please visit <a href="http://ionicframework.com/" target="_blank">Ionic Website</a> and check out their cool demos. With 
+the knowlege of angular and ionic, you can start build very cool apps on your own.
 
-Currently the user rating is in number format, which is not very visually appealing. We will introduce a simple rating system, and 
-use an image to represent each rating categories. In this exercise we implement a rating system similar to 
-<a href="http://www.rottentomatoes.com/" target="_blank">rottentomatoes</a>.
+## Differnce between native app and hybrid app
 
-## Directive
+Let's talk about differences between a native app and a hybrid app.
 
-We add a new file ***directives.js***. In this file, we create a new module ```movie.directives``` and a new directive ```score```. 
-The directive has a one-way data binding to a ```score``` variable, and depending on its value, set a corresponding image in the 
-directive's template. 
+Building native applications means using the native language of the platform, Objective-C/Swift on iOS, and Java on Android. 
+The main advantage is their performance. The drawback is you have to learn specific apis for each platform, 
+and write differnt sets of code. It is very rare to find a developer masters both android and iOS.
 
-## The release date filter
+To be specific, Java or Objective-C/Swift are more verbose than Javascript, you often need to write much more code in native app. 
+Also building with the native sdks are much more difficult than building with Html5. Part of the reason is cordova alredy 
+take care of the underlying 'dirty' work for us, so we only need to focus on the logic and presentation of our app.
 
-Another thing we want to change is the presentation of release date. Currently it is a 8-digit number in the format of ````YYYYMMDD```. 
-There are a lot of ways to format date, here we choose a very simple format ```yyyy/mm/dd``` to just show the idea.
+To summarize, if performance is critial (for example, if you are building a game app), or if you have a large team and the mobile app 
+is critial to your business, you should go with the native app. 
 
-This is a good case to use filter. In ***filters.js***, we add a new filter ```releaseDate```. The filter receives a 8-digit number 
-representing a date, and return a date string in the format ```yyyy/mm/dd```. 
+But a lot times we are building information related app. To this end, hybrid app is much more attractive. It covers all major 
+platforms, writing code against HTML5 and javascript is much easier. Also javascript is a very vibrant language, we see a lot of 
+improvements on the mobile side in the last few years. Major companies all invest heavily in javascript to make it competitive with 
+native languages. 
 
-## View
+## Showcase your app
 
-Finally we change the displays of rating and release date in ***movie-index.html*** and ***movie-detail.html*** to use our cunstom 
-```rating``` directive and ```releaseDate``` filter. As they are self-contained, we don't need to change anything in services and 
-controllers.
+We encouge you to build upon the app we created here or use it as reference for your future projects. Since all the work is synchronized 
+to your github account, you can use github to host your app by simply create a branch ```gh-pages``` and push to github. For more 
+information, please visit <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 
 
 
