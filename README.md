@@ -1,31 +1,35 @@
-Another popular feature in information displaying app is the abilities to sort results in various ways. We are going to 
-implement this feature in this exercise.
+The last feature we will add to the movie index page is filtering movies by user rating. Rating is an important indicator for 
+a movie. Very commonly users rely on rating to pick high quality movies. Also by implementing this feature, we learn how to add 
+third-party jquery plugin into an ionic app. 
 
-## Sort Movies
+## nouislider
 
-When facing a long list of movies, the sort function is very convenient. We will add four sort options -- sort by title, 
-by use rating, by release date and by popularity and sort in both directions.
+We use the jquery nouislider plugin to filter movies by rating. The plugin is referenced in ***index.htmll***. 
 
-Let's first identify the attributes in movie we will use. The first three sort options are obvious, there are fields just 
-store those information in movies. For popularity, we use the ```rating_count``` field in movie, as more people choose to rate 
-the movies means more people are interested in it.
+## Service 
 
-## Service
-
-Let's change ***services.js*** to support sorting on these four fields. We add ```sortMovies``` method, which expecting ```sortKey`` 
-and ```sortOrder``` variables. ```sortKey``` is the name of the field we are going to sort on, ```sortOrder``` is an integer, it controls 
-the order of sorting based on the sign of number. Please notice we again sorting on the ```current``` movies, so it will play nicely 
-with other features.
+We added ```filterByRating``` method in ***services.js***. This method expects a low rating and a high rating, it searchs all movies 
+and return those with rating between the rating range. Again it is a promise based method. So in controller, we will need to resolve 
+the returned results.
 
 ## Controller
 
-In ```MovieHomeCtrl```, we add a method ```$scope.sortMovies``` to work with ```MovieService.sortMovies``` to provide sort function. 
-More interstingly, we use ```ionicPopover``` directive to provide popup for user to select sort option. This directive expects 
-a template ```templates/popover.html```. This is in the ```movie-index.html```, the bottom ```<script>``` tag. 
+In ```MovieHomeCtrl```, the ```$scope.filterMovies``` method uses ```MovieService.filterByRating``` to filter movies and assign 
+results to ```$scope.movies```. The unique part is the first line in this method -- ```var range = $slider.val();```. This directly 
+calls the nouislider's api to get the two end vaules of the slider.
+
+The ```$slider``` is a jquery element defined below the ```filterMovies``` method. The code to work with nouislider is very typical 
+jquery functions we commonly see in the ```<script>``` tag in a html file. We can also put them in angular controller, and it will 
+execute just as plain javascript code. 
+
+This is a quick and dirty way to execute jquery functions. A better approach is to write a custom directive and encapsulate the 
+jquery plugin in it. Still we can see Angular and Jquery work together well. This allow us to use various jquery plugins to build a 
+better app.
 
 ## View
 
-Lastly in the ***movie-index.html***, we added ```<ion-nav-button>``` above the header bar. This button will show on the right of the 
-header. Click the button will show the sort menu from the template in ```<script id="templates/popover.html" type="text/ng-template">```. 
-For the template, each item has ng-click bind to the ```$scope.sortMovies``` in ```MovieHomeCtrl```, passing the corresponding sork key.
+We add a bottom bar in ***movie-index.html*** for the slider. It includes a ```<div id="slider">```, which is initialized by 
+nouislider.
+
+
 

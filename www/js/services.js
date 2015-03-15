@@ -83,12 +83,32 @@ angular.module('movie.services', [])
     return defer.promise;
   };
   
+  //filter movies based on the low and high rating
+  var filterByRating = function(low, high, pageNum, limit){
+    //rating is between 0 and 10
+    low = low || 0;
+    high = high || 10;
+    var defer = $q.defer();
+    getAllMovies().then(function(movies){
+      //use array.filters to select ones from all movies
+      //filter condition is movie.rating > low && movie.rating < high
+      //set filter results to be current selected movies
+      //use loadPage to resolve movies in desired pageNum from results
+      
+      
+      
+      
+    });       
+    return defer.promise;
+  };
+  
   return {
     loadPage: loadPage,
     hasMore: hasMore,
     getMovies: getMovies, 
     searchMovies: searchMovies,
-    sortMovies: sortMovies
+    sortMovies: sortMovies,
+    filterByRating: filterByRating
   };
     
 }])
