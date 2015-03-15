@@ -83,32 +83,44 @@ angular.module('movie.services', [])
     return defer.promise;
   };
   
-  //filter movies based on the low and high rating
   var filterByRating = function(low, high, pageNum, limit){
-    //rating is between 0 and 10
     low = low || 0;
     high = high || 10;
     var defer = $q.defer();
     getAllMovies().then(function(movies){
-      //use array.filters to select ones from all movies
-      //filter condition is movie.rating > low && movie.rating < high
-      //set filter results to be current selected movies
-      //use loadPage to resolve movies in desired pageNum from results
-      
-      
-      
-      
+      var results = movies.filter(function(movie) {
+        return movie.rating > low && movie.rating < high;
+      });        
+      reset(results);
+      defer.resolve(loadPage(pageNum, limit));
     });       
     return defer.promise;
   };
-  
+
+  var findMovieByTitle = function(title){
+    var defer = $q.defer();
+    //filter all movies to find the first one with title attribute the same as passed in title
+    getAllMovies().then(function(movies){
+      //change the code below. Return the first movie found with the title
+      //or return null if there is no movie with the passed in title
+      
+      defer.resolve(null);
+      
+      
+    
+      
+    });       
+    return defer.promise;      
+  };
+
   return {
     loadPage: loadPage,
     hasMore: hasMore,
     getMovies: getMovies, 
     searchMovies: searchMovies,
     sortMovies: sortMovies,
-    filterByRating: filterByRating
+    filterByRating: filterByRating,
+    findMovieByTitle: findMovieByTitle
   };
     
 }])

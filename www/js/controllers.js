@@ -42,17 +42,13 @@ angular.module('movie.controllers', [])
     }); 
   };
 
-
   $scope.filterMovies = function(){
-    var range = $slider.val();//range is a array of two elements [low, high]
-    //set currentPage to 0 to get first 20 results of rating
-    //Use method in MovieService and values from range to filter movies based on rating
-
-
-
-
-  };
-
+    var range = $slider.val();
+    currentPage = 0;
+    MovieService.filterByRating(range[0], range[1], currentPage, limit).then(function(movies){
+      $scope.movies = movies;
+    });
+  }
 
   //example configuration to use jquery noUiSlider
   var $slider = $("#slider");
@@ -91,7 +87,21 @@ angular.module('movie.controllers', [])
   }).then(function(popover) {
     $scope.popover = popover;
   });  
-  
 }])
+
+
+.controller('MovieDetailCtrl', ['$scope', '$location', 'movie', function($scope, $location, movie){
+  //if the movie does not exists, go back the the index page
+  if(!movie){
+    $location.path('/movies');
+  }
+  
+  //change the code below
+  //assign the movie passed-in to $scope.movie
+  $scope.movie = null;
+  
+
+}])
+
 
 ;

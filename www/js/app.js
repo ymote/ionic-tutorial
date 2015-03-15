@@ -14,6 +14,22 @@ angular.module('starter', ['ionic', 'movie.services'])
     controller: 'MovieHomeCtrl'
   })
 
+  .state('movie-detail', {
+    url: "/movie/:title",
+    templateUrl: "templates/movie-detail.html",
+    controller: "MovieDetailCtrl",
+    resolve: {
+      movie: ['MovieService','$stateParams', function(MovieService, $stateParams){
+  
+        //use the title attribute from $stateParams to locate movie
+        //complete code below
+
+
+
+      }]
+    }
+  }) 
+  
   ;
   
   // if none of the above states are matched, use this as the fallback

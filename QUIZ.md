@@ -1,4 +1,6 @@
-*1.* Finish the ```sortMovies``` method in ```MovieHomeCtrl``` to sort movies by sortKey.
+*1.* Finish the ```findMovieByTitle``` method in ```MovieService```. So with the title passed in, the method resovles to the first found 
+movie or resolve to null if no movie is found. 
 
-*2.* In ***movie-index.html***, complete the ng-click in the popover template to call the ```$scope.sortMovies``` method, passing the 
-sortKey, which is the corresponding field names in movie.
+*2.* In ***app.js***, complete resolve part in ```movie-detail``` to resolve movie from *1.**.
+
+*3.* Complete the view for movie in ***templates/movie-detail.html*** according to instructions on the page.
