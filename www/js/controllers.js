@@ -96,11 +96,8 @@ angular.module('movie.controllers', [])
     $location.path('/movies');
   }
   
-  //change the code below
-  //assign the movie passed-in to $scope.movie
-  $scope.movie = null;
+  $scope.movie = movie;
   
-
 }])
 
 

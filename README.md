@@ -1,32 +1,30 @@
-Our index page is packed with features we commonly find in a movie app. In this exercise, we are going to implement the detail 
-page for a movie, so user can drill down the see more details about a movie when he/she click it on the index page. It is quite 
-similar to what we were doing when adding the detail page for the Employee Directory App.
+For the final exercise, let's add a directive and a filter to polish the movie app a little bit.
 
-## Service
+## The rating directive
 
-Again we start with change in ***services.js***. This time we add a ```findMovieByTitle``` method expecting the title of a movie. 
-The method should search all movies and return the first one with the title passed in or return null if the title is not found.
+Currently the user rating is in number format, which is not very visually appealing. We will introduce a simple rating system, and 
+use an image to represent each rating categories. In this exercise we implement a rating system similar to 
+<a href="http://www.rottentomatoes.com/" target="_blank">rottentomatoes</a>.
 
-## Router
+## Directive
 
-We need to add a router in ***app.js*** as it is a new page. We add a new state ```movie-detail``` to ui-router. It use a url 
-segment ```:title``` to identify what movie should be present on the page. A new controller ```MovieDetailCtrl``` is used to handler 
-the logic, and a new view page ```templates/movie-detail.html``` is used to display the movie. 
+We add a new file ***directives.js***. In this file, we create a new module ```movie.directives``` and a new directive ```score```. 
+The directive has a one-way data binding to a ```score``` variable, and depending on its value, set a corresponding image in the 
+directive's template. 
 
-Also we use the resolve trick learned in Employee Directory app to get data from service. So the movie object can be injected into 
-controller as a parameter.
+## The release date filter
 
-## Controller
+Another thing we want to change is the presentation of release date. Currently it is a 8-digit number in the format of ````YYYYMMDD```. 
+There are a lot of ways to format date, here we choose a very simple format ```yyyy/mm/dd``` to just show the idea.
 
-The ```MovieDetailCtrl``` is very simple, it creates a ```$scope.movie``` variable to bind the movie to the view.
+This is a good case to use filter. In ***filters.js***, we add a new filter ```releaseDate```. The filter receives a 8-digit number 
+representing a date, and return a date string in the format ```yyyy/mm/dd```. 
 
 ## View
 
-The ***templates/movie-detail.html*** is also quite straightforwrd, it shows various attributes of the binded ```$scope.movie``` 
-variable.
-
-Lastly, we add ```href``` attribute to each ```<ion-item>``` in ***templates/movie-index.html***. So clicking a item will redirect 
-to its detail page.
+Finally we change the displays of rating and release date in ***movie-index.html*** and ***movie-detail.html*** to use our cunstom 
+```rating``` directive and ```releaseDate``` filter. As they are self-contained, we don't need to change anything in services and 
+controllers.
 
 
 
