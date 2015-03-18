@@ -13,14 +13,14 @@ The first thing is to add another router in ***app.js*** -- state ```employee```
 We now have a ```findById``` method in ***services.js***, which expecting an integer represents the 1 based index 
 of employee in the ```employees``` variable. We simply get the employee object from the array, and return it. Notice all methods in services return promises.
 
-### EmployeeDetailCtrl Controller
+### A new controller
 
 The ***controllers.js*** defines another controller for the employee detail page. It will run when url is ```/employees/:employeeId```. 
 
 Thanks to the ui-router, we can retrive the employee id through ```$stateParam.employeeId```. We need to pass it to ```findById``` method in ***services.js*** and 
 attach the returned employee to ```$scope```.
 
-### The Employee Detail View
+### The detail view
 
 Up to now, what we are doing is exactly the same as developing a web app. The view is where ionic shines and makes all the differnces for mobile app. 
 
