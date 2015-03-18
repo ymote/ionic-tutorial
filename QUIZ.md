@@ -1,1 +1,5 @@
-Let's change our app name from starter to **directory**, after all we are building an app to show employee directory. You need to change the name in both index.html and app.js.
+From the next exercise, we start build the ***Employee Directory*** app.
+
+First lets' change the app name from starter to ```directory```.
+
+You will need to change the name in both ***index.html*** and ***app.js***.
