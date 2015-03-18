@@ -34,8 +34,8 @@ We need to populate the ```$scope.employees``` using ```EmployeeService.findAll`
 
 ## Ionic list directive
 
-The corresponding view for the controller is ```employee-index.html```. It replace the ```<ion-nav-view></ion-nav-view>``` in ```index.html```. It is a 
-```<ion-view>``` directive. The ```view-title``` attribute will show at the top header bar of our app.
+The corresponding view for the controller is ```employee-index.html```. It replace the ```<ion-nav-view></ion-nav-view>``` in ```index.html```. It is a ```<ion-view>``` directive. 
+The ```view-title``` attribute will show at the top header bar of our app.
 
 ```<ion-list>``` is used to display a list of items. The list consist of multiple ```<ion-item>```. We use ```ng-repeat``` to populate the list with the 
 ```$scope.employees``` in controller. Each item contains an employee's image, name and title.
