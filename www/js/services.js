@@ -53,10 +53,9 @@ angular.module('directory.services', [])
       
       //fill in code below
       //filter employees to find people whose managerId is the managerId passed in.
-
-
-
-
+      results = employees.filter(function(element){
+        return element.managerId == managerId;
+      });
       deferred.resolve(results); //resolve the found results
       return deferred.promise;
     }    
