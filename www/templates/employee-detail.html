@@ -8,6 +8,21 @@
       <h2>{{employee.firstName}} {{employee.lastName}}</h2>
       <p>{{employee.title}}</p>
     </div>
+    
+    <!-- the following link redirecs to employee's manager detail page if 
+      employee has manager (managerId > 0) -->
+    <a class="item item-icon-left" href="" ng-if="">
+      <i class="icon ion-ios7-person"></i>View Manager
+      <p>{{employee.managerName}}</p>
+    </a>
+    
+    <!-- the following link redirecs to employee's report page if 
+      employee has reports (reports > 0) -->
+    <a class="item item-icon-left" href="" ng-if="">
+      <i class="icon ion-person-stalker"></i>View Direct Reports
+      <p>{{employee.reports}}</p>
+    </a>     
+    
     <a class="item item-icon-left" href="tel:{{employee.officePhone}}">
       <i class="icon ion-ios7-telephone"></i>Call Office
       <!-- show employee officePhone in <p> below -->
