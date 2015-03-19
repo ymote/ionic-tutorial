@@ -38,7 +38,7 @@ angular.module('movie.services', [])
     
     //todo return data from start to end
     //the start is inclusive, end is exclusive, [start, end)
-    return []; //change it
+    return movies.slice(start, end); //change it
     
   };
   

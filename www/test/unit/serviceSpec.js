@@ -45,6 +45,7 @@ describe("Test service pagination.", function() {
     expect(data.length).toBe(2, 'There should be 2 movies.');
     expect(data[0].title).toBe("Star Wars", 'The first movie should be \'Star Wars\'');
     expect(data[1].title).toBe("Finding Nemo", 'The second movie should be \'Finding Nemo\'');
+    expect(MovieService.hasMore(0,1)).toBe(true, 'hasMore should return true if numPage*limit < movies.length');
   });
   
 });
