@@ -28,9 +28,9 @@ of items (```limit```), and based on this value and the total size of our data, 
 Pagination essentially is to retrive data on a page (```pageNum```) of the book, which is the ```[pageNum*limit, (pageNum+1)*limit)``` range in 
 data.
 
-```loadPage``` method is used to retrive data given a ```pageNum``` and size of data in a page ```limit```. 
+The ```loadPage``` method is used to retrive data given a ```pageNum``` and size of data in a page ```limit```. 
 
-```hasMore``` methos is to determine if there are more data to load given the same parameters.
+The ```hasMore``` methos is to determine if there are more data to load given the same parameters.
 
 Finally ```getMovies``` get movies data utilize the upper two methods.
 
