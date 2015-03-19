@@ -11,14 +11,14 @@
     
     <!-- the following link redirecs to employee's manager detail page if 
       employee has manager (managerId > 0) -->
-    <a class="item item-icon-left" href="#/employees/{{employee.managerId}}" ng-if="employee.managerId>0">
+    <a class="item item-icon-left" href="" ng-if="">
       <i class="icon ion-ios7-person"></i>View Manager
       <p>{{employee.managerName}}</p>
     </a>
     
     <!-- the following link redirecs to employee's report page if 
       employee has reports (reports > 0) -->
-    <a class="item item-icon-left" href="#/employees/{{employee.id}}/reports" ng-if="reports.length>0">
+    <a class="item item-icon-left" href="" ng-if="">
       <i class="icon ion-person-stalker"></i>View Direct Reports
       <p>{{employee.reports}}</p>
     </a>     

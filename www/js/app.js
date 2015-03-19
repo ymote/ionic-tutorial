@@ -31,7 +31,7 @@ angular.module('directory', ['ionic','directory.services','directory.controllers
       //change the code
       //resolve the employee's reports
       reports: ['EmployeeService', '$stateParams', function(EmployeeService, $stateParams){
-        return EmployeeService.findByManager($stateParams.employeeId); //change
+        return null; //change
       }]      
     }    
   })  
@@ -45,13 +45,13 @@ angular.module('directory', ['ionic','directory.services','directory.controllers
       //change the code
       //resolve the employee object 
       employee: ['EmployeeService', '$stateParams', function(EmployeeService, $stateParams){
-        return EmployeeService.findById($stateParams.employeeId); //change
+        return null; //change
       }],
       
       //change the code
       //resolve the employee's reports
       reports: ['EmployeeService', '$stateParams', function(EmployeeService, $stateParams){
-        return EmployeeService.findByManager($stateParams.employeeId);  //change
+        return null;  //change
       }]
       
     }

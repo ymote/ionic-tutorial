@@ -37,14 +37,9 @@ describe('Test Employee Directory.', function(){
       checkLinkItem(elements, 2,'#/employees/4');
       checkLinkItem(elements, 3,'#/employees/5');
       
-      var julie = element.all(by.css('a.item')).get(0);
-      var image = julie.element(by.css('img'));
+      var julie = element.all(by.css('.reports a.item')).get(0);
       var name = julie.element(by.css('span'));
       var title = julie.element(by.css('p'));
-      
-      image.getAttribute('src').then(function(attr){
-        expect(attr).toContain('Julie_Taylor.jpg', 'The first report should be Julie Taylor and show her image.');
-      });
       
       expect(name.getInnerHtml()).toContain('Julie', 'The first report should have <span> contains Julie');
       expect(name.getInnerHtml()).toContain('Taylor', 'The first report should have <span> contains Taylor');
