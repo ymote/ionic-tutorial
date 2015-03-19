@@ -1,5 +1,3 @@
-**1.** Finish the ```getAllMovies``` method in ***services.js***. The method should return a promise, which resolves to the movies' array.
+**1.** In ***controllers.js***, finish the ```loadAllMovies``` method, which gets the movies data from ```MovieService.getAllMovies``` and assign it to ```$scope.movies```.
 
-**2.** In ***controllers.js***, pass the movies data from **1.** to ```$scope.movies```.
-
-**3.** Fill in the empty in ***movie-index.html*** to show selected movies' attributes.
+**2.** Fill in the empty elements in ***movie-index.html*** to show selected movies' attributes.
