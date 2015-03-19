@@ -25,7 +25,7 @@ store all the data, which inherently support data pagination.
 
 We added three methods ```loadPage```, ```hasMore``` and ```getMovies```. Let's image our data is stored in a book. Each page have a fixed number 
 of items (```limit```), and based on this value and the total size of our data, we can calculate the number of pages (```numPages```) in the book. 
-Pagination essentially is to retrive data on a page (```pageNum```) of the book, which is the [```pageNum*limit```, ```(pageNum+1)*limit```) range in 
+Pagination essentially is to retrive data on a page (```pageNum```) of the book, which is the ```[pageNum*limit, (pageNum+1)*limit)``` range in 
 data.
 
 ```loadPage``` method is used to retrive data given a ```pageNum``` and size of data in a page ```limit```. 
