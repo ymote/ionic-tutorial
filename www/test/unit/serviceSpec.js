@@ -9,10 +9,11 @@ describe("Test service pagination.", function() {
   
   var MovieService;
   
-  beforeEach(inject(function (_$q_, _$rootScope_,_MovieService_) {
+  beforeEach(inject(function (_$q_, _$rootScope_,_MovieService_,_$httpBackend_) {
     $q = _$q_;
     $rootScope = _$rootScope_;      
     MovieService = _MovieService_;
+    $httpBackend = _$httpBackend_;
   }));
   
   it('Should have employee service be defined.', function () {
@@ -20,6 +21,10 @@ describe("Test service pagination.", function() {
   });
 
   it('Should get first 2 movies if getMovies method is called with parameters 0 and 2', function(){
+    $httpBackend.whenGET("data/movies.json").respond([
+      { title:'Star Wars'}, {title: 'Finding Nemo'}, {title: 'Another Movie'}
+    ]);    
+    
     var data = [{title:''},{title:''}];
     // set up a deferred
     var deferred = $q.defer();
@@ -29,6 +34,7 @@ describe("Test service pagination.", function() {
     promise.then(function (response) {
       data = response;
     });
+    $httpBackend.flush();
     MovieService.getMovies(0,2).then(function(movies){
       deferred.resolve(movies);
     })
