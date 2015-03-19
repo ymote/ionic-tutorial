@@ -32,8 +32,9 @@ angular.module('directory.controllers', [])
 
 }])
    
-.controller('EmployeeDetailCtrl', ['$scope', 'employee', function($scope, employee) {
+.controller('EmployeeDetailCtrl', ['$scope', 'employee', 'reports', function($scope, employee, reports) {
   $scope.employee = employee;  
+  $scope.reports = reports;
 }])    
  
 .controller('EmployeeReportsCtrl', ['$scope', 'employee', 'reports', function ($scope, employee, reports) {
