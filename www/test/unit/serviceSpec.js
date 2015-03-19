@@ -24,7 +24,7 @@ describe("Test service pagination.", function() {
     $httpBackend.whenGET("data/movies.json").respond([
       { title:'Star Wars'}, {title: 'Finding Nemo'}, {title: 'Another Movie'}
     ]);    
-    
+    MovieService.movies = [{ title:'Star Wars'}, {title: 'Finding Nemo'}, {title: 'Another Movie'}];
     var data = [{title:''},{title:''}];
     // set up a deferred
     var deferred = $q.defer();
