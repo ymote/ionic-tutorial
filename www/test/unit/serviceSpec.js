@@ -34,7 +34,6 @@ describe("Test service pagination.", function() {
     promise.then(function (response) {
       data = response;
     });
-    $httpBackend.flush();
     MovieService.getMovies(0,2).then(function(movies){
       deferred.resolve(movies);
     })
