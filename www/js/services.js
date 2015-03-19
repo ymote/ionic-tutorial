@@ -46,7 +46,7 @@ angular.module('movie.services', [])
   var hasMore = function(pageNum, limit){
     
     //todo, check the start index given pageNum & limit is available in current variable
-    return false;
+    return pageNum * limit < movies.length;
     
   };
   
