@@ -38,7 +38,7 @@ angular.module('movie.services', [])
     
     //todo return data from start to end
     //the start is inclusive, end is exclusive, [start, end)
-    return movies.slice(start, end); //change it
+    return []; //change it
     
   };
   
@@ -46,7 +46,7 @@ angular.module('movie.services', [])
   var hasMore = function(pageNum, limit){
     
     //todo, check the start index given pageNum & limit is available in current variable
-    return pageNum*limit < movie.length;
+    return false;
     
   };
   
@@ -61,6 +61,7 @@ angular.module('movie.services', [])
   return {
     loadPage: loadPage,
     hasMore: hasMore,
+    getAllMovies: getAllMovies,
     getMovies: getMovies,    
   };
     
