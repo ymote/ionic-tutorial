@@ -40,7 +40,7 @@ angular.module('movie.services', [])
   
   //given a pageNum and limit, check if there are move data in movies variable  
   var hasMore = function(pageNum, limit){
-    return pageNum * limit < current.length;
+    return pageNum * limit < movies.length;
   };
   
   var getMovies = function(pageNum, limit){

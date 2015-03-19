@@ -1,7 +1,7 @@
 In this exercise, we finish our implementation of inifinite scrolling. We now already have service support data pagination, let's 
 see how to use it in controller and view.
 
-### Controlelr 
+### Controller 
 
 We add two $scope mehods in controller. These methods are triggered by ```<ion-infinite-scroll>``` directive. 
 
