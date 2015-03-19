@@ -36,6 +36,14 @@ Now for the ```EmployeeReportsCtrl```, we need to get the manager (the employee 
 
 ### View
 
+In ***employee-detail.html**, below ```item-avatar``` we add two new items redirect to a employee's manager and his/her reporters. Notice 
+we onyl want to show these items when they are available. 
+
+For example, the CEO does not have a manager. Also for a new employee, he/she may not have reporters. ```ng-if``` is very helpful for 
+these scenarios.
+
 Finally we need to contruct a view page ***employee-reports.html*** to show all reporters of a employee. We can use a card view to display. 
 The first item in card is the information of manager, with the rest items represent his/her reporters.
+
+
 
