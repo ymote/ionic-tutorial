@@ -24,10 +24,6 @@ describe("Test service pagination.", function() {
     $httpBackend.whenGET("data/movies.json").respond([
       { title:'Star Wars'}, {title: 'Finding Nemo'}, {title: 'Another Movie'}
     ]);    
-    MovieService.getAllMovies().then(function (movies) {
-      
-    });
-    $httpBackend.flush();
     var data = [{title:''},{title:''}];
     // set up a deferred
     var deferred = $q.defer();
@@ -37,9 +33,14 @@ describe("Test service pagination.", function() {
     promise.then(function (response) {
       data = response;
     });
-    MovieService.getMovies(0,2).then(function(movies){
-      deferred.resolve(movies);
-    })
+  
+    MovieService.getAllMovies().then(function () {
+      MovieService.getMovies(0,2).then(function(movies){
+        deferred.resolve(movies);
+      })
+    });
+    $httpBackend.flush();  
+    
     $rootScope.$digest(); 
     expect(data.length).toBe(2, 'There should be 2 movies.');
     expect(data[0].title).toBe("Star Wars", 'The first movie should be \'Star Wars\'');
