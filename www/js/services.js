@@ -35,7 +35,7 @@ angular.module('movie.services', [])
       end = movies.length;
     }
     
-    return current.slice(start, end);
+    return movies.slice(start, end);
   };
   
   //given a pageNum and limit, check if there are move data in movies variable  
@@ -54,6 +54,7 @@ angular.module('movie.services', [])
   return {
     loadPage: loadPage,
     hasMore: hasMore,
+    getAllMovies: getAllMovies,
     getMovies: getMovies,    
   };
     

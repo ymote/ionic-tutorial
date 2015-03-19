@@ -21,7 +21,7 @@ angular.module('movie.controllers', [])
     //concat append movies to $scope.movies
     $scope.movies = $scope.movies.concat([]);
     
-    
+
     //this is to notify ionic infinite scroller we have loaded data
     //ionic will take care of scrolling in the view
     $scope.$apply(function(){
@@ -36,8 +36,7 @@ angular.module('movie.controllers', [])
     //we want to know if MovieService has more data for currentPage+1 
     //fill in code below to complete this method
     
-    
-    
+    return false;
     
   };
   

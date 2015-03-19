@@ -8,9 +8,21 @@ describe("Test infinite scrolling.", function() {
   
   var MovieHomeCtrl;
   
-  beforeEach(inject(function($rootScope, $controller, _MovieService_) {
+  beforeEach(inject(function($rootScope, $controller, _MovieService_, _$httpBackend_) {
     scope = $rootScope.$new();
+    $httpBackend = _$httpBackend_;
+    MovieService = _MovieService_;
     EmployeeIndexController = $controller('MovieHomeCtrl', {$scope: scope, MovieService: _MovieService_});
+    var dummy = {'title': 'dummy'};
+    var results = [];
+    for (var i=0;i<100;i++){
+      results.push(dummy);
+    }
+    $httpBackend.whenGET("data/movies.json").respond(results);
+    MovieService.getAllMovies().then(function(){
+      
+    });
+    $httpBackend.flush();
     scope.$digest();
   }));
   
@@ -29,8 +41,13 @@ describe("Test infinite scrolling.", function() {
     expect(scope.hasMoreData()).toBeTruthy();
   });
   
-  it('hasMoreData should return false when currentPage is a large number, such as 20.', function(){
-    scope.currentPage = 20;
+  it('hasMoreData should return false when currentPage is a large number (loadMoreData is called 6 times).', function(){
+    scope.loadMoreData();
+    scope.loadMoreData();
+    scope.loadMoreData();
+    scope.loadMoreData();
+    scope.loadMoreData();
+    scope.loadMoreData();
     expect(scope.hasMoreData()).toBeFalsy();
   });  
   
