@@ -24,14 +24,6 @@ describe('Test Search Movies.', function(){
       });
     });
     
-    it('Should clear searching and show default movies when clear the searchKey input.', function(){
-      element(by.model('searchKey')).sendKeys('');
-      
-      element.all(by.repeater('movie in movies')).then(function(movies){
-        expect(movies).not.toBe(null);
-        expect(movies.length).toBe(20, 'Default there should be 20 movies on page because of pagination.'); //default show 20 movies
-      });    
-    });
   });
   
 });
