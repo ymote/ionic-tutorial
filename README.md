@@ -11,8 +11,8 @@ seach results are gone.
 
 To make sure these two features play together, we use a variabe `current` to store the search results. 
 
-A new method `reset` is called in the `searchMovies` function. It store the search results in `current`.  
-And pagination is now acting on `current` movies rather than all `movies` data. 
+A new method `reset` is called in the `searchMovies` function. It store the search results in `current`. And pagination is now acting 
+on `current` movies rather than all `movies` data. 
 
 We will keep this convention when adding other features -- each feature changes the value of `current`.
 
