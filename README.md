@@ -3,7 +3,7 @@ Employee Directory App. Let's start coding it.
 
 ### Service
 
-We added a *searchMovies* method, which is fed with a *searchKey* variable and do a search on movies' titles, directors and actors.
+We added a `searchMovies` method, which is fed with a *searchKey* variable and do a search on movies' titles, directors and actors.
 
 Please note we added another variabe *current* to store data. This is because now we have two features, it is likely search will return 
 more than 20 results, then scrolling should work on the search results. It would be very confusing if a user scorll the page, his/her 
