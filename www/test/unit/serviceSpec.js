@@ -54,7 +54,7 @@ describe("Test ratings with 3 movies pool -- The Godfather, Finding Nemo and Bat
     promise.then(function (response) {
       data = response;
     });
-    MovieService.filterByRating(0.0,5.5,0,0,20).then(function(movies){
+    MovieService.filterByRating(0.0,5.5,0,20).then(function(movies){
         deferred.resolve(movies);
     })
     $rootScope.$digest(); 
@@ -72,7 +72,7 @@ describe("Test ratings with 3 movies pool -- The Godfather, Finding Nemo and Bat
     promise.then(function (response) {
       data = response;
     });
-    MovieService.filterByRating(8.0,8.2,0,0,20).then(function(movies){
+    MovieService.filterByRating(8.0,8.2,0,20).then(function(movies){
         deferred.resolve(movies);
     })
     $rootScope.$digest(); 
