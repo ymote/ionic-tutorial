@@ -5,7 +5,7 @@ Rating is an important indicator for a movie. In this feature, we learn how to a
 ### nouislider
 
 We use the jquery <a href="http://refreshless.com/nouislider/" target="_blank">nouislider plugin</a> to filter movies by rating. 
-The plugin is referenced in ***index.htmll***. 
+The plugin is referenced in ***index.html***. 
 
 ### Service 
 
