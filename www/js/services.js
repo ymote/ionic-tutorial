@@ -106,6 +106,7 @@ angular.module('movie.services', [])
   return {
     loadPage: loadPage,
     hasMore: hasMore,
+    getAllMovies: getAllMovies,
     getMovies: getMovies, 
     searchMovies: searchMovies,
     sortMovies: sortMovies,
