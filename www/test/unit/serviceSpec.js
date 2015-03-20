@@ -15,7 +15,7 @@ describe("Test ratings with 3 movies pool -- The Godfather, Finding Nemo and Bat
     MovieService = _MovieService_;
     $httpBackend = _$httpBackend_;
     $httpBackend.whenGET("data/movies.json").respond([
-      { title:'The Godfather', rating:'9.2'}, {title: 'Finding Nemo', rating:'8.1'}, {title: 'Batman Forever', rating: '5.4'}
+      { title:'The Godfather', rating: 9.2}, {title: 'Finding Nemo', rating: 8.1}, {title: 'Batman Forever', rating: 5.4}
     ]); 
     MovieService.getAllMovies().then(function () {
     });
