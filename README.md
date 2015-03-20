@@ -9,7 +9,7 @@ Please note we added another variabe ```current``` to store data. This is becaus
 more than 20 results, then scrolling should work on the search results. It would be very confusing if a user scorll the page, his/her 
 seach results are gone.
 
-To make sure these two features play together, we use a variabe ```current``` to store the search results. A new method ```reset`` is called 
+To make sure these two features play together, we use a variabe ```current``` to store the search results. A new method ```reset``` is called 
 in the ```searchMovies``` function. It store the search results in ```current```.  And pagination is now acting on ```current``` movies 
 rather than all ```movies``` data. 
 
