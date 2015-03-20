@@ -40,24 +40,20 @@
   
 </ion-view>
 
-<!-- sort movies by 'title', 'rating', 'release_date' and 'rating_count' -->
-<!-- ths is a typical usage to provide template for angular directive -->
-<!-- the id attribute is used as the templateUrl for directive -->
-<!-- please complete the four ng-click calls for sorting the movies -->
 <script id="templates/popover.html" type="text/ng-template">
   <ion-popover-view style="height: 220px">
     <ion-content>
       <div class="list">
-        <a class="item" ng-click="">
+        <a class="item" ng-click="sortMovies('title')">
           Sort by Title
         </a>
-        <a class="item" ng-click="">
+        <a class="item" ng-click="sortMovies('rating')">
           Sort by Rating
         </a>
-        <a class="item" ng-click="">
+        <a class="item" ng-click="sortMovies('release_date')">
           Sort by Release Date
         </a>
-        <a class="item" ng-click="">
+        <a class="item" ng-click="sortMovies('rating_count')">
           Sort by Porpularity
         </a>        
       </div>
