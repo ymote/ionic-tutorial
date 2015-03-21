@@ -46,6 +46,7 @@ angular.module('movie.services', [])
   var getMovies = function(pageNum, limit){
     var defer = $q.defer();
     getAllMovies().then(function(movies){
+      reset(movies);
       defer.resolve(loadPage(pageNum, limit));
     });
     return defer.promise;
