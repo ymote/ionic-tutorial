@@ -23,7 +23,7 @@ angular.module('movie', ['ionic', 'movie.services', 'movie.controllers'])
   
         //use the title attribute from $stateParams to locate movie
         //complete code below
-
+        return null;
 
 
       }]
