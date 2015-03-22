@@ -10,6 +10,7 @@ describe('Test Movie Detail.', function(){
     });
     
     it('Should redirect to the detail page when click the movie\'s record on home page. Go to the first movie\'s page.', function(){
+      expect(element(by.css('.card .item')).isPresent()).toBe(true, 'Should be on detail page');
       var titleElem = element.all(by.css('.card .item')).get(0);
       var title = titleElem.element(by.css('h2')).getText();
       expect(title).toContain('Star Wars', 'There should be an h2 element contains movie\'title -- Star Wars.');

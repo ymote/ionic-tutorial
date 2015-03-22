@@ -4,6 +4,7 @@ angular.module('movie.controllers', [])
   $scope.movies = [];
   $scope.searchKey = '';
   $scope.sortKey = '';
+  $scope.deduction = 10;
   var sortOrder = 1;
 
   var limit = 20, currentPage = 0;
