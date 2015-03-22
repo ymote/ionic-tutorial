@@ -43,39 +43,11 @@ angular.module('movie.controllers', [])
   };
 
   $scope.filterMovies = function(){
-    var range = $slider.val();
     currentPage = 0;
     MovieService.filterByRating(range[0], range[1], currentPage, limit).then(function(movies){
       $scope.movies = movies;
     });
   }
-
-  //example configuration to use jquery noUiSlider
-  var $slider = $("#slider");
-  //initialize the slider configuration
-  $slider.noUiSlider({
-    start: [ 0, 10 ], //to start, filter movies rating from 0 to 10, that is all movies
-    connect: true,
-    step: 0.5, //increment step interval is 0.5
-    range: { //set the filter rating between 0 and 10
-      'min': 0,
-      'max': 10
-    }
-  });
-  //use slider tooltip to show the actual values of filter
-  $slider.Link('lower').to('-inline-<div class="tooltip"></div>', function ( value ) {
-    $(this).html(
-      '<span>' + value.substr(0, value.length - 1) + '</span>'
-    );
-  });
-  $slider.Link('upper').to('-inline-<div class="tooltip"></div>', function ( value ) {
-    $(this).html(
-      '<span>' + value.substr(0, value.length - 1) + '</span>'
-    );
-  });
-  //wire the change event on slider to the $scope.filterMovies method
-  //so the filter method is triggered when values change in slider
-  $slider.on({change: $scope.filterMovies});
 
 
   //shows the usage of $ionicPopover, see ionic documentation for detail explanation.
