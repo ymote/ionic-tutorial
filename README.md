@@ -4,7 +4,7 @@ This marks the end of the ionic course. Hopefully you find ionic very powerful a
 information, please visit <a href="http://ionicframework.com/" target="_blank">Ionic Website</a> and check out their cool demos. With 
 the knowlege of angular and ionic, you can start build very cool apps on your own.
 
-### Differnce between native app and hybrid app
+### Differences between native app and hybrid app
 
 Let's talk about differences between a native app and a hybrid app.
 
