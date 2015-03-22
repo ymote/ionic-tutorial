@@ -1,11 +1,14 @@
 The last feature we will add to the movie index page is filtering movies by user rating. 
 
-Rating is an important indicator for a movie. In this feature, we learn how to add third-party jquery plugin into an ionic app. 
+Rating is an important indicator for a movie. In this feature, we use ionic range to add rating filter. 
 
-### nouislider
+### ionic range
 
-We use the jquery <a href="http://refreshless.com/nouislider/" target="_blank">nouislider plugin</a> to filter movies by rating. 
-The plugin is referenced in ***index.html***. 
+Check ionic documentation for more details about <a href="http://ionicframework.com/docs/components/#range" target="_blank">range</a>. 
+Here we use it to pick out a number from 0 to 10 in order to filter rating. 
+
+We assume user always want to see the higher rated movies. So for the selected number from ionic range, we filter out movies with rating 
+lower than that number.
 
 ### Service 
 
@@ -15,23 +18,15 @@ the returned results.
 
 ### Controller
 
-In **MovieHomeCtrl**, the `$scope.filterMovies` method filters movies and assign results to `$scope.movies`. The unique part is the 
-first line in this method -- 
+In **MovieHomeCtrl**, we add `$scope.$watch` on variable `$scope.deduction`. This variable is binded to ionic range, It helps us 
+to calculate the lower end of the filter (10-deduction). 
 
-  ```var range = $slider.val();``` 
-
-This directly calls the nouislider's api to get the two end vaules of the slider.
-
-The `$slider` is a jquery element defined below the `filterMovies` method. The code to work with nouislider is very typical 
-jquery functions. We can also put them in angular controller, and it will execute just as plain javascript code. 
-
-This is a quick and dirty way to execute jquery functions. A better approach is to write a custom directive and encapsulate the 
-jquery plugin in it. We can see Angular and Jquery work together well. This allow us to use various jquery plugins in Angular app.
+So as soon as the range value changes, the new filter range is calcuated (10-deduction to 10). It is passed into `MovieService.filterByRating` 
+to get us new list of movies.
 
 ### View
 
-We add a bottom bar in ***movie-index.html*** for the slider. It includes a `<div id="slider">`, which is initialized by 
-nouislider.
+We add a bottom bar in ***movie-index.html*** for the slider. It includes the ionic range.
 
 
 
