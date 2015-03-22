@@ -64,17 +64,8 @@ angular.module('movie.controllers', [])
 }])
 
 
-.controller('MovieDetailCtrl', ['$scope', '$location', 'movie', function($scope, $location, movie){
-  //if the movie does not exists, go back the the index page
-  if(!movie){
-    $location.path('/movies');
-  }
-  
-  //change the code below
-  //assign the movie passed-in to $scope.movie
-  $scope.movie = null;
-  
-
+.controller('MovieDetailCtrl', ['$scope', 'movie', function($scope, movie){
+  $scope.movie = movie;
 }])
 
 
