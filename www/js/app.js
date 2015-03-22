@@ -15,7 +15,7 @@ angular.module('movie', ['ionic', 'movie.services', 'movie.filters', 'movie.dire
   })
 
   .state('movie-detail', {
-    url: "/movie/:title",
+    url: "/movies/:title",
     templateUrl: "templates/movie-detail.html",
     controller: "MovieDetailCtrl",
     resolve: {
