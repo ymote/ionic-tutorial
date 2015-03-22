@@ -95,9 +95,9 @@ angular.module('movie.services', [])
       //filter condition is movie.rating > low && movie.rating < high
       //set filter results to be current selected movies
       //use loadPage to resolve movies in desired pageNum from results
-      
-      
-      
+
+
+
       
     });       
     return defer.promise;
