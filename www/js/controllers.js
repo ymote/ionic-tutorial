@@ -43,6 +43,14 @@ angular.module('movie.controllers', [])
     }); 
   };
 
+  $scope.$watch('deduction', function(){
+    var high = 10;
+    var low = high - parseInt($scope.deduction);
+    currentPage = 0;
+    MovieService.filterByRating(low, high, currentPage, limit).then(function(movies){
+      $scope.movies = movies;
+    });
+  });
 
   //shows the usage of $ionicPopover, see ionic documentation for detail explanation.
   //the name for the popover view is 'templates/popover', it is the templateUrl for the $ionicPopover directive.
