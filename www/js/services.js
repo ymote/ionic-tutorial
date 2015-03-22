@@ -46,6 +46,7 @@ angular.module('movie.services', [])
   var getMovies = function(pageNum, limit){
     var defer = $q.defer();
     getAllMovies().then(function(movies){
+      reset(movies);
       defer.resolve(loadPage(pageNum, limit));
     });
     return defer.promise;
@@ -101,14 +102,14 @@ angular.module('movie.services', [])
     var defer = $q.defer();
     //filter all movies to find the first one with title attribute the same as passed in title
     getAllMovies().then(function(movies){
-      //change the code below. Return the first movie found with the title
-      //or return null if there is no movie with the passed in title
-      
-      defer.resolve(null);
-      
-      
-    
-      
+      var results = movies.filter(function(movie){
+        return movie.title == title;
+      });
+      if (results.length>0){
+        resolve(results[0]);
+      } else {
+        resolve(null);
+      }
     });       
     return defer.promise;      
   };

@@ -1,6 +1,3 @@
-*1.* Finish the ```findMovieByTitle``` method in ```MovieService```. So with the title passed in, the method resovles to the first found 
-movie or resolve to null if no movie is found. 
+**1.** Implement **score** directive according to instructions in ***directives.js***. 
 
-*2.* In ***app.js***, complete resolve part in ```movie-detail``` to resolve movie from *1.**.
-
-*3.* Complete the view for movie in ***templates/movie-detail.html*** according to instructions on the page.
+**2.** In ***filters.js***, complete the **releaseDate** filter according to instructions.
