@@ -106,9 +106,9 @@ angular.module('movie.services', [])
         return movie.title == title;
       });
       if (results.length>0){
-        resolve(results[0]);
+        defer.resolve(results[0]);
       } else {
-        resolve(null);
+        defer.resolve(null);
       }
     });       
     return defer.promise;      
