@@ -30,7 +30,7 @@ describe('Test Employee Directory.', function(){
     it('Should go to the report page when click the first item link and show the 4 reporters.', function(){
       element.all(by.css('a.item')).get(0).click();
       expect(element(by.css('.reports')).isPresent()).toBe(true);
-      expect(element.all(by.css('.reports .item')).count()).toBe(5);
+      expect(element.all(by.css('.reports .item')).count()).toBe(5, 'There should be 5 rows on the page -- manager and 4 reporters.');
       var elements = element.all(by.css('.reports a.item'));
       checkLinkItem(elements, 0,'#/employees/2');
       checkLinkItem(elements, 1,'#/employees/3');
