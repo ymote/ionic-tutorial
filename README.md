@@ -4,7 +4,7 @@ First of all, let's get all our movies shown when the app starts. Again we deleg
 ### service
 
 We use angular built-in <a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">$http</a> module to read data from ***movies.json*** 
-through the ```MovieService.getAllMovies``` method. As alwarys, we use promises to interact with data. 
+through the ```MovieService.getAllMovies``` method. As always, we use promises to interact with data. 
 
 The data is stored to a local variable ```movies```. So we only need to read the json file once. 
 
