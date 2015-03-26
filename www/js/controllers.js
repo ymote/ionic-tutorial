@@ -26,7 +26,7 @@ angular.module('directory.controllers', [])
   
   //get all employees from EmployeeService
   var findAllEmployees = function() {
-    EmployeeService.findByName($scope.searchKey).then(function (employees) {
+    EmployeeService.findAll().then(function (employees) {
       $scope.employees = employees;
     });
   };
