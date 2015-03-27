@@ -9,13 +9,13 @@ use an image to represent each rating categories. In this exercise we implement 
 ### Directive
 
 We add a new file ***directives.js***. In this file, we create a new module **movie.directives** and a new directive `score`. 
-The directive has a one-way data binding to a `score` variable, and depending on its value, set a corresponding image in the 
+The directive has a one-way data binding to a `rating` variable, and depending on its value, set a corresponding image in the 
 directive's template. 
 
 ### The release date filter
 
 Another thing we want to change is the presentation of release date. Currently it is a 8-digit number in the format of `YYYYMMDD`. 
-There are a lot of ways to format date, here we choose a very simple format `yyyy/mm/dd` just show the idea.
+There are a lot of ways to format date, here we choose a very simple format `yyyy/mm/dd` just to show the idea.
 
 This is a good case to use filter. In ***filters.js***, we add a new filter **releaseDate**. The filter receives a 8-digit number 
 representing a date, and return a date string in the format `yyyy/mm/dd`. 
