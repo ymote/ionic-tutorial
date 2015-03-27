@@ -17,13 +17,13 @@ which will be called to get more data.
 ### Service
 
 To implement infinite scrolling, first we need to change the way of retriving data. We start by loading a small chunk of data and keeping 
-track of the size of already loaded data. The following requests will continute from where we stop last time. 
+track of the size of already loaded data. The following requests will continue from where we stop last time. 
 
 Let's look at the actual implementation. In ***services.js***, since we are using a json file, we still load all movies in to ```movies``` 
 variable initially and then mimic pagination by extracing data from it. In a production envrionment, you will likely to use a database to 
-store all the data, which inherently support data pagination.
+store all the data which inherently support data pagination.
 
-We added three methods ```loadPage```, ```hasMore``` and ```getMovies```. Let's image our data is stored in a book. Each page have a fixed number 
+We added three methods ```loadPage```, ```hasMore``` and ```getMovies```. Let's imagine our data is content in a book. Each page have a fixed number 
 of items (```limit```), and based on this value and the total size of our data, we can calculate the number of pages (```numPages```) in the book. 
 Pagination essentially is to retrive data on a page (```pageNum```) of the book, which is the ```[pageNum*limit, (pageNum+1)*limit)``` range in 
 data.
