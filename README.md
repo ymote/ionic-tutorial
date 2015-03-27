@@ -6,8 +6,8 @@ Employee Directory App. Let's start coding it.
 We added a `searchMovies` method, which is fed with a `searchKey` variable and do a search on movies' titles, directors and actors.
 
 Please note we added another variabe `current` to store data. This is because now we have two features, it is likely search will return 
-more than 20 results, then scrolling should work on the search results. It would be very confusing if a user scorll the page, his/her 
-seach results are gone.
+more than 20 results, then scrolling should work on the search results. It would be very confusing if a user scroll the page, his/her 
+search results are gone.
 
 To make sure these two features play together, we use a variabe `current` to store the search results. 
 
