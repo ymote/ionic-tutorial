@@ -38,6 +38,7 @@ angular.module('directory.services', [])
         //find if searchkey is part of fullName.
         //convert them to lowercase or uppercase first as the search should be case-insensitive
 
+		 return fullName.toLowerCase().indexOf(searchKey.toLowerCase()) > -1;
 
       });
       deferred.resolve(results);
