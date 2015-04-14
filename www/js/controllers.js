@@ -11,8 +11,9 @@ angular.module('directory.controllers', [])
   $scope.$watch('searchKey', function(){
     //fill in code below
     //use the findByName method in EmployeeService to return qualified employees and assign to $scope.employees
-    EmployeeService($scope.searchKey).then(function(employee){
-    $scope.employees = employee;
+
+    EmployeeService.findByName($scope.searchKey).then(function (employees) {
+      $scope.employees = employees;
     });
     
     
