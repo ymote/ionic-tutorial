@@ -21,9 +21,9 @@ angular.module('directory', ['ionic'])
 
 .controller('EmployeeIndexCtrl',['$scope',function ($scope) { 
 
-  $scope.employees = [ 
-     
-     
+  $scope.employees = [{ 
+    "id": 1, "firstName": "James", "lastName": "King", "title": "President and CEO", "pic": "James_King.jpg"},{ 
+    "id": 2, "firstName": 
      
   ]; 
 
