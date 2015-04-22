@@ -1,12 +1,12 @@
 <ion-view view-title="Employees">
 
-<ion-header-bar class="bar-subheader item-inp 
-   
-     
-     
-   
-   
- 
+<ion-header-bar class="bar-subheader item-input-inset"> 
+  <label class="item-input-wrapper"> 
+    <i class="icon ion-ios7-search placeholder-icon"></i> 
+    <input id="searchKey" type="search" placeholder="Search" ng-model="searchKey" autocorrect="off" > 
+  </label> 
+  <button class="button button-clear" ng-click="clearSearch()">X</button> 
+</ion-header-bar> 
 
 <ion-content>
   <ion-list>
