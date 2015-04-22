@@ -21,11 +21,11 @@ angular.module('directory', ['ionic'])
 
 .controller('EmployeeIndexCtrl',['$scope',function ($scope) { 
 
-   
+  $scope.employees = [ 
      
      
      
-   
+  ]; 
 
 }]) 
 
