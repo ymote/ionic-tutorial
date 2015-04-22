@@ -12,15 +12,12 @@ angular.module('directory.controllers', [])
     //fill in code below
     //use the findByName method in EmployeeService to return qualified employees and assign to $scope.employees
     
-    
-    
   });
 
   //clear the search, should show all employees
   $scope.clearSearch = function () {
     $scope.searchKey = "";
-    //fill in the code below to show all employees
-    
+    //fill in the code below, use findAllEmployees method to show all employees
     
   };
   

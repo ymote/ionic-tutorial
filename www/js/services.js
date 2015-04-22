@@ -33,7 +33,6 @@ angular.module('directory.services', [])
       var deferred = $q.defer();
       var results = employees.filter(function(element) {
         var fullName = element.firstName + " " + element.lastName;
-        
         //fill in the code below
         //find if searchkey is part of fullName.
         //convert them to lowercase or uppercase first as the search should be case-insensitive
