@@ -28,17 +28,19 @@
       <ion-header-bar class="bar-stable">
         <h1 class="title">Employee Directory</h1>
       </ion-header-bar>
-      <ion-list>
-        <ion-item ng-repeat="employee in employees" type="item-text-wrap" class="item-avatar">
-          <!-- add employee image, url is "pics/<pic-attribute>" -->
-          
-          {{employee.firstName}} {{employee.lastName}}
-          
-          <!-- show employee's title in <p> tag below -->
-          <p> </p>
-          
-        </ion-item>
-      </ion-list>
+      <ion-content>
+        <ion-list>
+          <ion-item ng-repeat="employee in employees" type="item-text-wrap" class="item-avatar">
+            <!-- add employee image, url is "pics/<pic-attribute>" -->
+            
+            {{employee.firstName}} {{employee.lastName}}
+            
+            <!-- show employee's title in <p> tag below -->
+            <p> </p>
+            
+          </ion-item>
+        </ion-list>
+      </ion-content>
     </ion-pane>
     
 <script type="text/javascript">//<![CDATA[
