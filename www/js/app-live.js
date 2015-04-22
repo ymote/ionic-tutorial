@@ -21,10 +21,10 @@ angular.module('directory', ['ionic'])
 
 .controller('EmployeeIndexCtrl',['$scope',function ($scope) { 
 
-  $scope.employees = [{ 
-    "id": 1, "firstName": "James", "lastName": "King", "title": "President and CEO", "pic": "James_King.jpg"},{ 
-    "id": 2, "firstName": 
-     
+  $scope.employees = [ 
+    {"id": 1, "firstName": "James", "lastName": "King", "title": "President and CEO", "pic": "James_King.jpg"}, 
+    {"id": 2, "firstName": "Julie", "lastName": "Taylor", "title": "VP of Marketing", "pic": "Julie_Taylor.jpg"}, 
+    {"id": 3, "firstName": "Eugene", "lastName": "Lee", "title": "CFO", "pic": "Eugene_Lee.jpg"} 
   ]; 
 
 }]) 
