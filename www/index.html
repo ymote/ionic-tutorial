@@ -32,11 +32,11 @@
         <ion-list>
           <ion-item ng-repeat="employee in employees" type="item-text-wrap" class="item-avatar">
             <!-- add employee image, url is "pics/<pic-attribute>" -->
-            
+            <img, ng-src=pics/{{pic attribute in employee}}>
             {{employee.firstName}} {{employee.lastName}}
             
             <!-- show employee's title in <p> tag below -->
-            <p> </p>
+            <p>{{employee.title}} </p>
             
           </ion-item>
         </ion-list>
