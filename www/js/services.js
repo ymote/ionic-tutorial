@@ -27,24 +27,7 @@ angular.module('directory.services', [])
       var deferred = $q.defer();
       deferred.resolve(employees);
       return deferred.promise;
-    },
-    
-    findByName: function(searchKey) {
-      var deferred = $q.defer();
-      var results = employees.filter(function(element) {
-        var fullName = element.firstName + " " + element.lastName;
-        
-        //fill in the code below
-        //find if searchkey is part of fullName.
-        //convert them to lowercase or uppercase first as the search should be case-insensitive
-
-		 return fullName.toLowerCase().indexOf(searchKey.toLowerCase()) > -1;
-
-      });
-      deferred.resolve(results);
-      return deferred.promise;
-    }    
-    
+    }
   }
 
 }]);

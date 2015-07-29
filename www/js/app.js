@@ -3,26 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('directory', ['ionic','directory.services','directory.controllers'])
-
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-  
-  //please see angular ui-router's documentation on usage
-  $stateProvider
-  
-  //when url is /employees, the EmployeeIndexCtrl will run, and the view will be templates/employee-index.html
-  .state('employee-index', {
-    url: '/employees',
-    templateUrl: 'templates/employee-index.html',
-    controller: 'EmployeeIndexCtrl'
-  })
-  
-  ;
-
-  // if none of the above states are matched, use this as the fallback
-  // also the home page / goes to /employees, so it is the default page
-  $urlRouterProvider.otherwise('/employees');   
-}])
+angular.module('directory', ['ionic', 'directory.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -36,7 +17,18 @@ angular.module('directory', ['ionic','directory.services','directory.controllers
       StatusBar.styleDefault();
     }
   });
-
 })
+
+.controller('EmployeeIndexCtrl',['$scope', 'EmployeeService', function ($scope, EmployeeService) {
+
+  //use EmployeeService.findAll method to return employees
+  //use .then(successCallback, errorCallback, notifyCallback) to get employees
+  $scope.employees = [
+    {"id": 1, "firstName": "James", "lastName": "King", "title": "President and CEO", "pic": "James_King.jpg"},
+    {"id": 2, "firstName": "Julie", "lastName": "Taylor", "title": "VP of Marketing", "pic": "Julie_Taylor.jpg"},
+    {"id": 3, "firstName": "Eugene", "lastName": "Lee", "title": "CFO", "pic": "Eugene_Lee.jpg"}
+  ];
+
+}])
 
 ;
